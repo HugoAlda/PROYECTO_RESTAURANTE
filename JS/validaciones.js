@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // VALIDACIÓN CONTRASEÑA
         // Campo vacío
         if (password === "" || password === null) {
-            alert('La contraseña no puede estar vacía"');
+            alert('La contraseña no puede estar vacía');
             event.preventDefault();
             exit();
         }

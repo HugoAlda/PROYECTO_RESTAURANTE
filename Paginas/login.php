@@ -16,14 +16,12 @@ require_once('../Procesos/conection.php');
 <body>
     <form id="login" class="login" method="POST" action="proceso_login.php">
         <label>Nombre de usuario:</label>
-        <input type="text" id="username" name="username">
-        <br>
+        <input type="text" id="username" name="username" placeholder="Nombre de usuario">
         <br>
         <label>Contraseña:</label>
-        <input type="password" id="pwd" name="pwd">
+        <input type="password" id="pwd" name="pwd" placeholder="Contraseña">
         <br>
-        <br>
-        <input type="submit" value="Enviar">
+        <input type="submit" value="Enviar" id="enviar">
     </form>
 </body>
 </html>
