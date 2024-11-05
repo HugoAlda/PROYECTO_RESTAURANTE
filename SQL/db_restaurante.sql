@@ -13,14 +13,14 @@ CREATE TABLE tbl_camarero (
 CREATE TABLE tbl_salas (
     id_salas INT NOT NULL PRIMARY KEY,
     name_sala VARCHAR(15) NOT NULL,
-    tipo_sala VARCHAR(15) NOT NULL
+    tipo_sala ENUM("Comedor", "Terraza", "Privado") NOT NULL
 );
 
 CREATE TABLE tbl_mesas (
     id_mesa INT NOT NULL PRIMARY KEY,
     n_asientos INT(2) NOT NULL,
     id_sala INT NOT NULL,
-    estado_sala ENUM("V", "R") NOT NULL,
+    estado_sala ENUM("A", "NA") NOT NULL,
     assigned_by INT NULL,
     assigned_to VARCHAR(30) NULL
 );
