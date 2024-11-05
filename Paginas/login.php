@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('conection.php');
+require_once('../Procesos/conection.php');
 ?>
 
 <!DOCTYPE html>
