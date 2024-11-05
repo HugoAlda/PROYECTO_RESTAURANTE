@@ -1,7 +1,7 @@
 <?php
 
 
-if (!filter_has_var(INPUT_POST, 'enviar')) {
+if (!filter_has_var(INPUT_POST, 'Enviar')) {
     header("Location: ../Paginas/login.php?error=inicioMal");
     exit();
 }
