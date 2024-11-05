@@ -1,5 +1,5 @@
 <?php
-
+include_once("./procesoLogin.php");
 
 if (!filter_has_var(INPUT_POST, 'enviar')) {
     header("Location: ../Paginas/login.php?error=inicioMal");
