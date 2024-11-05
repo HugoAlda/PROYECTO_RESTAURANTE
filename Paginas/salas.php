@@ -7,25 +7,40 @@
 </head>
 <body>
 
-<a href="./login.php"><button class="logout">Salirte</button></a>
+<a href="./login.php"><button class="logout">Salir</button></a>
 
 <form action="./mesas.php" method="POST">
     <div class="container">
-        <input type="submit" name="sala" value="comedor1" class="input">
-        <input type="submit" name="sala" value="comedor2" class="input">
+        <?php
+        require_once "../Procesos/conection.php";
 
-        <input type="submit" name="sala" value="terraza1" class="input">
-        <input type="submit" name="sala" value="terraza2" class="input">
-        <input type="submit" name="sala" value="terraza3" class="input">
+        // Consulta SQL para obtener las salas usando una sentencia preparada
+        $consulta = "SELECT name_sala FROM tbl_salas";
+        $stmt = $conn->prepare($consulta);
 
-        <input type="submit" name="sala" value="privado1" class="input">
-        <input type="submit" name="sala" value="privado2" class="input">
-        <input type="submit" name="sala" value="privado3" class="input">
-        <input type="submit" name="sala" value="privado4" class="input">
+        // Ejecutar la consulta
+        if ($stmt->execute()) {
+            // Obtener los resultados
+            $resultado = $stmt->get_result();
+
+            // Generación de botones para cada sala
+            if ($resultado->num_rows > 0) {
+                while ($fila = $resultado->fetch_assoc()) {
+                    $nombre_sala = htmlspecialchars($fila['name_sala']); // Sanitizar el nombre de la sala
+                    echo "<input type='submit' name='sala' value='$nombre_sala' class='input'>";
+                }
+            } else {
+                echo "<p>No hay salas disponibles</p>";
+            }
+        } else {
+            echo "<p>Error al ejecutar la consulta</p>";
+        }
+
+        // Cerrar la declaración y la conexión
+        $stmt->close();
+        ?>
     </div>
 </form>
-
-
 
 </body>
 </html>
