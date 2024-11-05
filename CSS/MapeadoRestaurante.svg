@@ -2,7 +2,7 @@
     <!-- Imagen de fondo en bucle -->
     <defs>
         <pattern id="background" patternUnits="userSpaceOnUse" width="1528" height="746">
-            <image href="./img/fondo_restaurante.jfif" x="0" y="0" width="1528" height="746" preserveAspectRatio="xMinYMin slice"/>
+            <image href="../img/fondo_restaurante.jfif" x="0" y="0" width="1528" height="746" preserveAspectRatio="xMinYMin slice"/>
         </pattern>
     </defs>
     
