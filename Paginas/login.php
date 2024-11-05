@@ -21,7 +21,10 @@ require_once('../Procesos/conection.php');
         <label>Contraseña:</label>
         <input type="password" id="pwd" name="pwd" placeholder="Contraseña">
         <br>
-        <input type="submit" value="Enviar" id="enviar">
+        <?php
+            if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "<span style='color: red;'>Usuario o contraseña incorrectos</span>";}
+        ?>
+        <input type="submit" value="Enviar" id="enviar" name="enviar">
     </form>
 </body>
 </html>
