@@ -1,13 +1,7 @@
-<svg width="1528" height="746" xmlns="http://www.w3.org/2000/svg" style="background-color: #f0f0f0;">
-    <!-- Imagen de fondo en bucle -->
-    <defs>
-        <pattern id="background" patternUnits="userSpaceOnUse" width="1528" height="746">
-            <image href="../img/fondo_restaurante.jfif" x="0" y="0" width="1528" height="746" preserveAspectRatio="xMinYMin slice"/>
-        </pattern>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg">
     
     <!-- Fondo del restaurante con la imagen -->
-    <rect x="0" y="0" width="1528" height="746" fill="url(#background)"/>
+    <rect x="0" y="0" width="100%" height="100%" fill="#c1c1c1"/>
 
     <g id="layout" transform="translate(50, 0)">
         <!-- Superficies grandes (2) - Comedores -->
