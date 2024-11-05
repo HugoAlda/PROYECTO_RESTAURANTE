@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('conection.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ session_start();
     <title>Bienvenido</title>
 </head>
 <body>
-    <form id="login" class="login" method="POST" action="">
+    <form id="login" class="login" method="POST" action="proceso_login.php">
         <label>Nombre de usuario:</label>
         <input type="text" id="username" name="username">
         <br>
