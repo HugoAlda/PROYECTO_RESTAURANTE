@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once("./conection.php");
 
 if (!filter_has_var(INPUT_POST, 'enviar')) {
@@ -10,7 +12,7 @@ $usr = mysqli_escape_string($conn, htmlspecialchars($_POST["username"]));
 $pwd = mysqli_escape_string($conn, htmlspecialchars(hash('sha256',$_POST["pwd"])));
 
 try {
-    $sqlInicio = "SELECT tbl_camarero.id_camarero, tbl_camarero.pwd_camarero FROM tbl_camarero WHERE tbl_camarero.username_camarero = ?";
+    $sqlInicio = "SELECT id_camarero, pwd_camarero FROM tbl_camarero WHERE username_camarero = ?";
 
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sqlInicio);
@@ -19,23 +21,20 @@ try {
     $resultado = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($resultado) > 0) {
-
         $row = mysqli_fetch_assoc($resultado);
         $_SESSION["camareroID"] = $row["id_camarero"];
 
-        if (!password_verify($pwd, $row["pwd_camarero"])) {
+        if ($pwd !== $row["pwd_camarero"]) {
             header("Location: ../index.php?error=datosMal");
             exit();
         }
     } else {
-        header("Location: ../index.php?error=datosMal");
+        header("Location: ../index.php?error=Nohaynada");
         exit();
-    }
-    
+    } 
     header("Location: ../Paginas/salas.php");
-    exit();
     mysqli_stmt_close($stmt);
-
+    exit();
 } catch (Exception $e) {
     echo "Error al iniciar sesión: " . $e->getMessage();
     die();

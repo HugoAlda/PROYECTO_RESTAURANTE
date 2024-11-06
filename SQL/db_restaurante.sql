@@ -19,14 +19,13 @@ CREATE TABLE tbl_salas (
 CREATE TABLE tbl_mesas (
     id_mesa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     n_asientos INT NOT NULL,
-    id_sala INT NOT NULL,
-    estado_sala ENUM("A", "NA") NOT NULL DEFAULT "NA"
+    id_sala INT NOT NULL
 );
 
 CREATE TABLE tbl_historial(
     id_historial INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    fecha_A date NOT NULL,
-    fecha_NA date NULL,
+    fecha_A datetime NOT NULL,
+    fecha_NA datetime NULL,
     assigned_by INT NOT NULL,
     assigned_to VARCHAR(30) NOT NULL,
     id_mesa INT NOT NULL
@@ -92,8 +91,8 @@ INSERT INTO tbl_mesas (n_asientos, id_sala) VALUES
 
 INSERT INTO tbl_historial (fecha_A, fecha_NA, assigned_by, assigned_to, id_mesa) 
 VALUES 
-('2024-03-14 14:20:10', NULL, 1, 'Juanjo', 10),
-('2024-05-22 11:10:30', NULL, 5, 'Juana', 15),
-('2024-09-15 10:45:15', NULL, 2, 'Canis', 18),
-('2024-11-1 08:00:00', NULL, 4, 'Nuestro querido jose', 11),
-('2024-03-14 14:20:10', '2024-03-14 14:30:10', 3, 'Panchito', 2); -- para pruebas
+(NOW(), NULL, 1, 'Juanjo', 1),
+(NOW(), NULL, 5, 'Juana', 2),
+(NOW(), NULL, 2, 'Canis', 3),
+(NOW(), NULL, 4, 'Nuestro querido jose', 4),
+(NOW(), NOW(), 3, 'Panchito', 4); -- para pruebas
