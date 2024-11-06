@@ -17,7 +17,7 @@
         
         // Sesion
         if (!isset($_SESSION["camareroID"])) {
-            header('Location: ../index.php');
+            header('Location: ../index.php?error=nosesion');
             exit();
         } else {
             $id_user = $_SESSION["camareroID"];

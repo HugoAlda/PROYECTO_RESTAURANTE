@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorContraseña.innerHTML  = errors.password.join('<br>');
 
             // Prevenimos el envío del formulario
-            event.preventDefault();
-        }
+            // event.preventDefault();
+        } 
     });
 });
