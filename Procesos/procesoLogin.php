@@ -1,10 +1,11 @@
 <?php
+include_once("./procesoLogin.php");
 
-
-if (!filter_has_var(INPUT_POST, 'Enviar')) {
+if (!filter_has_var(INPUT_POST, 'enviar')) {
     header("Location: ../Paginas/login.php?error=inicioMal");
     exit();
 }
+
 $usr = mysqli_escape_string($conn, htmlspecialchars($_POST["username"]));
 $pwd = mysqli_escape_string($conn, htmlspecialchars(SHA2($_POST["pwd"], 256)));
 
@@ -31,8 +32,9 @@ try {
         exit();
     }
     
-    header("Location: ../Paginas/login.php");
+    header("Location: ../Paginas/salas.php");
     exit();
+    mysqli_stmt_close($stmt);
 
 } catch (Exception $e) {
     echo "Error al iniciar sesión: " . $e->getMessage();
