@@ -21,7 +21,7 @@ try {
     if (mysqli_num_rows($resultado) > 0) {
 
         $row = mysqli_fetch_assoc($resultado);
-        $_SESSION["camareroID"] = $row["id_camarero"]
+        $_SESSION["camareroID"] = $row["id_camarero"];
 
         if (!password_verify($pwd, $row["pwd_camarero"])) {
             header("Location: ../Paginas/login.php?error=datosMal");
