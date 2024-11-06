@@ -15,12 +15,15 @@ session_start();
 <body>
     <form id="login" class="login" method="POST" action="proceso_login.php">
         <label>Nombre de usuario:</label>
-        <input type="text" id="username" name="username" placeholder="Nombre de usuario">
+        <input type="text" id="username" name="username" placeholder="Nombre de usuario" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'"} ?>>
         <br>
         <label>Contraseña:</label>
         <input type="password" id="pwd" name="pwd" placeholder="Contraseña">
         <br>
-        <input type="submit" value="Enviar" id="enviar">
+        <?php
+            if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "<span style='color: red;'>Usuario o contraseña incorrectos</span>";}
+        ?>
+        <input type="submit" value="Enviar" id="enviar" name="enviar">
     </form>
 </body>
 </html>
