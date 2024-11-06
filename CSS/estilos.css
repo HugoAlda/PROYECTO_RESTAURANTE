@@ -15,18 +15,18 @@ body {
 
 .login {
     background-color: white;
-    padding: 30px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 400px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* Removido align-items: center para no centrar los mensajes */
 }
 
 .login label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
     text-align: left;
     width: 100%;
@@ -35,17 +35,17 @@ body {
 .login input[type="text"],
 .login input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .login input[type="submit"] {
     background-color: #007bff;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -55,4 +55,11 @@ body {
 
 .login input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    text-align: left;
+    width: 100%;
 }
