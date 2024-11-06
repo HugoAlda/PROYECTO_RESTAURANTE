@@ -1,16 +1,16 @@
 <?php
-include_once("./procesoLogin.php");
+include_once("./conection.php");
 
 if (!filter_has_var(INPUT_POST, 'enviar')) {
-    header("Location: ../Paginas/login.php?error=inicioMal");
+    header("Location: ../index.php?error=inicioMal");
     exit();
 }
 
 $usr = mysqli_escape_string($conn, htmlspecialchars($_POST["username"]));
-$pwd = mysqli_escape_string($conn, htmlspecialchars(SHA2($_POST["pwd"], 256)));
+$pwd = mysqli_escape_string($conn, htmlspecialchars(hash('sha256',$_POST["pwd"])));
 
 try {
-    $sqlInicio = "SELECT tbl_camareros.id_camarero, tbl_camareros.pwd_camarero FROM tbl_camareros WHERE tbl_camareros.username_camarero = ?";
+    $sqlInicio = "SELECT tbl_camarero.id_camarero, tbl_camarero.pwd_camarero FROM tbl_camarero WHERE tbl_camarero.username_camarero = ?";
 
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sqlInicio);
@@ -24,11 +24,11 @@ try {
         $_SESSION["camareroID"] = $row["id_camarero"];
 
         if (!password_verify($pwd, $row["pwd_camarero"])) {
-            header("Location: ../Paginas/login.php?error=datosMal");
+            header("Location: ../index.php?error=datosMal");
             exit();
         }
     } else {
-        header("Location: ../Paginas/login.php?error=datosMal");
+        header("Location: ../index.php?error=datosMal");
         exit();
     }
     
