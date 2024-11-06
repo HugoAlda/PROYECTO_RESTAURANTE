@@ -27,6 +27,13 @@
                 <line x1="0" y1="320" x2="0" y2="0" stroke="#333" stroke-width="2"/>
                 <image href="./img/Madera.png" x="1" y="1" width="480" height="320"/>
             </g>
+            <g id="Puerta" transform="translate(915, 140)scale(0.7)rotate(180)">
+                <!-- Contorno de la puerta -->
+               <line x1="100" y1="150" x2="50" y2="150" stroke="black" stroke-width="2"/> <!-- Lado de la puerta fijo -->
+               <line x1="100" y1="100" x2="100" y2="150" stroke="black" stroke-width="2"/> <!-- Lado móvil de la puerta -->
+               <!-- Arco de apertura -->
+               <path d="M 50 150 A 50 50 0 0 1 100 100" fill="none" stroke="black" stroke-width="2" stroke-dasharray="4,4"/>
+           </g>
         </g>
 
         <!-- Superficies medianas (3) - Terrazas -->
