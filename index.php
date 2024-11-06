@@ -17,12 +17,17 @@ session_start();
         <label>Nombre de usuario:</label>
         <input type="text" id="username" name="username" placeholder="Nombre de usuario" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
         <br>
+        <span class="error" id="errorUsername"></span>
+        <br>
         <label>Contraseña:</label>
         <input type="password" id="pwd" name="pwd" placeholder="Contraseña" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
         <br>
         <?php
             if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "<span style='color: red;'>Usuario o contraseña incorrectos</span>";}
         ?>
+        <br>
+        <span class="error" id="errorContraseña"></span>
+        <br>
         <input type="submit" value="Enviar" id="enviar" name="enviar">
     </form>
 </body>

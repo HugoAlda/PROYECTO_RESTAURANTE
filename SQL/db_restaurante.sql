@@ -19,8 +19,7 @@ CREATE TABLE tbl_salas (
 CREATE TABLE tbl_mesas (
     id_mesa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     n_asientos INT NOT NULL,
-    id_sala INT NOT NULL,
-    estado_sala ENUM("A", "NA") NOT NULL DEFAULT "NA"
+    id_sala INT NOT NULL
 );
 
 CREATE TABLE tbl_historial(
