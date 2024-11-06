@@ -13,9 +13,9 @@ session_start();
     <title>Bienvenido</title>
 </head>
 <body>
-    <form id="login" class="login" method="POST" action="proceso_login.php">
+    <form id="login" class="login" method="POST" action="procesoLogin.php">
         <label>Nombre de usuario:</label>
-        <input type="text" id="username" name="username" placeholder="Nombre de usuario" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'"} ?>>
+        <input type="text" id="username" name="username" placeholder="Nombre de usuario" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
         <br>
         <label>Contraseña:</label>
         <input type="password" id="pwd" name="pwd" placeholder="Contraseña">
