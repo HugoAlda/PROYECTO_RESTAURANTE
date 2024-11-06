@@ -31,6 +31,15 @@
 
 <?php
 require_once "../Procesos/conection.php";
+session_start();
+
+// Sesion
+if (!isset($_SESSION["camareroID"])) {
+    header('Location: ../index.php');
+    exit();
+} else {
+    $id_user = $_SESSION["camareroID"];
+}
 
 // Verificar si se ha enviado el nombre de la sala
 if (isset($_POST['sala'])) {

@@ -7,12 +7,21 @@
 </head>
 <body>
 
-<a href="./login.php"><button class="logout">Salir</button></a>
+<a href="../index.php"><button class="logout">Salir</button></a>
 
 <form action="./mesas.php" method="POST">
     <div class="container">
         <?php
         require_once "../Procesos/conection.php";
+        session_start();
+        
+        // Sesion
+        if (!isset($_SESSION["camareroID"])) {
+            header('Location: ../index.php');
+            exit();
+        } else {
+            $id_user = $_SESSION["camareroID"];
+        }
 
         // Consulta SQL para obtener las salas usando una sentencia preparada
         $consulta = "SELECT name_sala FROM tbl_salas";

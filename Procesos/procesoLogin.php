@@ -10,7 +10,7 @@ $usr = mysqli_escape_string($conn, htmlspecialchars($_POST["username"]));
 $pwd = mysqli_escape_string($conn, htmlspecialchars(hash('sha256',$_POST["pwd"])));
 
 try {
-    $sqlInicio = "SELECT tbl_camarero.id_camarero, tbl_camarero.pwd_camarero FROM tbl_camarero WHERE tbl_camarero.username_camarero = ?";
+    $sqlInicio = "SELECT id_camarero, pwd_camarero FROM tbl_camarero WHERE username_camarero = ?";
 
     $stmt = mysqli_stmt_init($conn);
     mysqli_stmt_prepare($stmt, $sqlInicio);
@@ -23,12 +23,12 @@ try {
         $row = mysqli_fetch_assoc($resultado);
         $_SESSION["camareroID"] = $row["id_camarero"];
 
-        if (!password_verify($pwd, $row["pwd_camarero"])) {
+        if ($pwd !== $row["pwd_camarero"]) {
             header("Location: ../index.php?error=datosMal");
             exit();
         }
     } else {
-        header("Location: ../index.php?error=datosMal");
+        header("Location: ../index.php?error=Nohaynada");
         exit();
     }
     
