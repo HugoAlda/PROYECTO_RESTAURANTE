@@ -19,14 +19,21 @@ CREATE TABLE tbl_salas (
 CREATE TABLE tbl_mesas (
     id_mesa INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     n_asientos INT NOT NULL,
-    id_sala INT NOT NULL,
-    estado_sala ENUM("A", "NA") NOT NULL DEFAULT "NA",
-    assigned_by INT NULL,
-    assigned_to VARCHAR(30) NULL
+    id_sala INT NOT NULL
+);
+
+CREATE TABLE tbl_historial(
+    id_historial INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    fecha_A datetime NOT NULL,
+    fecha_NA datetime NULL,
+    assigned_by INT NOT NULL,
+    assigned_to VARCHAR(30) NOT NULL,
+    id_mesa INT NOT NULL
 );
 
 ALTER TABLE tbl_mesas ADD CONSTRAINT fk_sala_mesa FOREIGN KEY (id_sala) REFERENCES tbl_salas(id_salas);
-ALTER TABLE tbl_mesas ADD CONSTRAINT fk_mesa_asignada FOREIGN KEY (assigned_by) REFERENCES tbl_camarero(id_camarero);
+ALTER TABLE tbl_historial ADD CONSTRAINT fk_camarero_asignado FOREIGN KEY (assigned_by) REFERENCES tbl_camarero(id_camarero);
+ALTER TABLE tbl_historial ADD CONSTRAINT fk_mesa_historial FOREIGN KEY (id_mesa) REFERENCES tbl_mesas(id_mesa);
 
 INSERT INTO tbl_camarero (name_camarero, surname_camarero, username_camarero, pwd_camarero)
 VALUES
@@ -82,3 +89,10 @@ INSERT INTO tbl_mesas (n_asientos, id_sala) VALUES
 (4, 9),
 (6, 9);
 
+INSERT INTO tbl_historial (fecha_A, fecha_NA, assigned_by, assigned_to, id_mesa) 
+VALUES 
+(NOW(), NULL, 1, 'Juanjo', 1),
+(NOW(), NULL, 5, 'Juana', 2),
+(NOW(), NULL, 2, 'Canis', 3),
+(NOW(), NULL, 4, 'Nuestro querido jose', 4),
+(NOW(), NOW(), 3, 'Panchito', 4); -- para pruebas
