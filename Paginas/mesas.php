@@ -79,7 +79,7 @@ if (isset($_SESSION['sala'])) {
         $stmt_mesas->execute();
         $resultado_mesas = $stmt_mesas->get_result();
 
-        
+
         // Mostrar mesas como botones
         echo "<h2>Mesas en: $nombre_sala</h2>";
         echo "<form action='./asignar_mesa.php' method='POST'>";
