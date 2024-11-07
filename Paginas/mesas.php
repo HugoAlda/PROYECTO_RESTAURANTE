@@ -39,11 +39,16 @@ if (!isset($_SESSION["camareroID"])) {
     exit();
 } else {
     $id_user = $_SESSION["camareroID"];
+    // sesion de sala
+        if (isset($_POST['sala'])){
+        $_SESSION['sala'] = $_POST['sala'];
+        }
 }
 
+
 // Verificar si se ha enviado el nombre de la sala
-if (isset($_POST['sala'])) {
-    $nombre_sala = $_POST['sala'];
+if (isset($_SESSION['sala'])) {
+    $nombre_sala = $_SESSION['sala']; 
 
     // Sanitizar el nombre de la sala
     $nombre_sala = htmlspecialchars($nombre_sala);
@@ -60,16 +65,16 @@ if (isset($_POST['sala'])) {
 
         // Consultar las mesas en esa sala
         $stmt_mesas = $conn->prepare("
-            SELECT m.id_mesa, m.n_asientos, 
-            CASE 
-                WHEN h.fecha_NA IS NULL THEN 'Asignada'
-                ELSE 'No Asignada'
-            END AS estado_mesa
-            FROM tbl_mesas m
-            LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
-            WHERE m.id_sala = ?
-            GROUP BY m.id_mesa
-        ");
+        SELECT m.id_mesa, m.n_asientos, 
+        CASE 
+            WHEN h.fecha_NA IS NULL AND h.id_mesa IS NOT NULL THEN 'Asignada'
+            ELSE 'No Asignada'
+        END AS estado_mesa
+        FROM tbl_mesas m
+        LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
+        WHERE m.id_sala = ?
+        GROUP BY m.id_mesa
+        "); 
         $stmt_mesas->bind_param("i", $id_sala);
         $stmt_mesas->execute();
         $resultado_mesas = $stmt_mesas->get_result();
