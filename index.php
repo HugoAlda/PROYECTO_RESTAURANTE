@@ -14,7 +14,7 @@ session_start();
 </head>
 <body>
     <div class="imgIndex">
-        <img src="./CSS/img/restaureantelogo_no_acabado" alt="Imagen descriptiva">
+        <img src="./CSS/img/logo" alt="Imagen descriptiva">
     </div>
 
     <form id="login" class="login" method="POST" action="./Procesos/procesoLogin.php">
