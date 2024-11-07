@@ -29,7 +29,7 @@ try {
             exit();
         }
     } else {
-        header("Location: ../index.php?error=Nohaynada");
+        header("Location: ../index.php?error=datosMal");
         exit();
     } 
     header("Location: ../Paginas/salas.php");
