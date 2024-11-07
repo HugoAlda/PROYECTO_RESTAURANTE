@@ -1,3 +1,49 @@
-body {
-    background-image: url(./img/MapeadoRestaurante.png);
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+/* Contenedor superior (mapeado + mesas) */
+.contenedor-superior {
+    display: flex;
+    width: 100%;
+    height: 90%; /* Ocupa el 80% de la altura */
+}
+
+/* Div mapeado */
+.mapeado {
+    width: 70%; /* 70% del ancho */
+    height: 100%; /* Ocupa el 100% de la altura asignada en .contenedor-superior */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mapeado>img{
+    width: 100%;
+    height: 100%;
+}
+
+/* Div mesas */
+.mesas {
+    width: 30%; /* 30% del ancho */
+    height: 100%; /* Ocupa el 100% de la altura asignada en .contenedor-superior */
+    display: flex;
+}
+
+/* Footer */
+.footer {
+    width: 100%; /* 100% del ancho */
+    height: 10%; /* Ocupa el 20% de la altura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f1; /* Color de fondo opcional */
 }
