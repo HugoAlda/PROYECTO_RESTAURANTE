@@ -46,14 +46,14 @@ VALUES
 -- Inserciones en la tabla tbl_salas
 INSERT INTO tbl_salas (name_sala, tipo_sala)
 VALUES
-('Comedor 1', 'Comedor'),
-('Terraza 1', 'Terraza'),
-('Salón VIP', 'Privado'),
-('Comedor 2', 'Comedor'),
-('Jardín', 'Terraza'),
-('Terraza 2', 'Terraza'),
-('Salón VIP 2', 'Privado'),
-('Salón romántico', 'Privado'),
+('Comedor_1', 'Comedor'),
+('Terraza_1', 'Terraza'),
+('Salon_VIP', 'Privado'),
+('Comedor_2', 'Comedor'),
+('Jardin', 'Terraza'),
+('Terraza_2', 'Terraza'),
+('Salon_VIP_2', 'Privado'),
+('Salon_romantico', 'Privado'),
 ('Naturaleza', 'Privado');
 
 -- Inserciones en la tabla tbl_mesas
