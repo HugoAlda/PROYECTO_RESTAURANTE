@@ -16,7 +16,10 @@ session_start();
     <form id="login" class="login" method="POST" action="./Procesos/procesoLogin.php">
         <label>Nombre de usuario:</label>
         <input type="text" id="username" name="username" placeholder="Nombre de usuario" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
+<<<<<<< HEAD
+=======
         <span class="error" id="errorUsername"></span>
+>>>>>>> f60fb0b18787969afa07ae0ca265d6c5091eb73d
         <br>
         <label>Contraseña:</label>
         <input type="password" id="pwd" name="pwd" placeholder="Contraseña" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
