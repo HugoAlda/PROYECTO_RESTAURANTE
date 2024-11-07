@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once("./conection.php");
 
 if (!filter_has_var(INPUT_POST, 'enviar')) {
@@ -19,7 +21,6 @@ try {
     $resultado = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($resultado) > 0) {
-
         $row = mysqli_fetch_assoc($resultado);
         $_SESSION["camareroID"] = $row["id_camarero"];
 
@@ -30,12 +31,10 @@ try {
     } else {
         header("Location: ../index.php?error=Nohaynada");
         exit();
-    }
-    
+    } 
     header("Location: ../Paginas/salas.php");
-    exit();
     mysqli_stmt_close($stmt);
-
+    exit();
 } catch (Exception $e) {
     echo "Error al iniciar sesión: " . $e->getMessage();
     die();

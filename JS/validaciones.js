@@ -82,6 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Prevenimos el envío del formulario
             event.preventDefault();
-        }
+        } 
     });
 });

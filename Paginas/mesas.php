@@ -27,13 +27,13 @@
 </head>
 <body>
 
-<a href="./index.php"><button class="back">Volver</button></a>
+<a href="salas.php"><button class="back">Volver a salas</button></a>
 
 <?php
 require_once "../Procesos/conection.php";
 session_start();
 
-// Sesion
+// Comprobación de sesión activa
 if (!isset($_SESSION["camareroID"])) {
     header('Location: ../index.php');
     exit();
@@ -50,7 +50,7 @@ if (isset($_POST['sala'])) {
 
     // Consultar ID de la sala basada en el nombre
     $stmt = $conn->prepare("SELECT id_salas FROM tbl_salas WHERE name_sala = ?");
-    $stmt->bind_param("s", $nombre_sala); // Vincular parámetro
+    $stmt->bind_param("s", $nombre_sala);
     $stmt->execute();
     $resultado = $stmt->get_result();
 
@@ -58,33 +58,43 @@ if (isset($_POST['sala'])) {
     if ($fila = $resultado->fetch_assoc()) {
         $id_sala = $fila['id_salas'];
 
-        // Ahora consultar las mesas en esa sala
-        $stmt_mesas = $conn->prepare("SELECT id_mesa, n_asientos, estado_sala FROM tbl_mesas WHERE id_sala = ?");
-        $stmt_mesas->bind_param("i", $id_sala); // Vincular el ID de sala
+        // Consultar las mesas en esa sala
+        $stmt_mesas = $conn->prepare("
+            SELECT m.id_mesa, m.n_asientos, 
+            CASE 
+                WHEN h.fecha_NA IS NULL THEN 'Asignada'
+                ELSE 'No Asignada'
+            END AS estado_mesa
+            FROM tbl_mesas m
+            LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
+            WHERE m.id_sala = ?
+            GROUP BY m.id_mesa
+        ");
+        $stmt_mesas->bind_param("i", $id_sala);
         $stmt_mesas->execute();
         $resultado_mesas = $stmt_mesas->get_result();
 
-        // Mostrar mesas como botones de tipo submit
+        // Mostrar mesas como botones
         echo "<h2>Mesas en: $nombre_sala</h2>";
-        echo "<form action='./asignar_mesa.php' method='POST'>"; 
+        echo "<form action='./asignar_mesa.php' method='POST'>";
 
         if ($resultado_mesas->num_rows > 0) {
             while ($mesa = $resultado_mesas->fetch_assoc()) {
                 $id_mesa = htmlspecialchars($mesa['id_mesa']);
                 $n_asientos = htmlspecialchars($mesa['n_asientos']);
-                $estado_sala = htmlspecialchars($mesa['estado_sala']);
+                $estado_mesa = htmlspecialchars($mesa['estado_mesa']);
                 
-                // Determinar la clase del botón según el estado
-                $boton_clase = ($estado_sala == 'NA') ? 'btn-verde' : 'btn-rojo';
+                // Clase del botón según el estado de la mesa
+                $boton_clase = ($estado_mesa === 'Asignada') ? 'btn-rojo' : 'btn-verde';
                 
                 // Botón para cada mesa
-                echo "<input type='submit' name='mesa' value='Mesa $id_mesa (Asientos: $n_asientos)' class='$boton_clase'>";
+                echo "<button type='submit' name='mesa' value='$id_mesa' class='$boton_clase'>Mesa $id_mesa (Asientos: $n_asientos)</button>";
             }
         } else {
             echo "<p>No hay mesas disponibles en esta sala.</p>";
         }
 
-        echo "</form>"; // Cerrar el formulario
+        echo "</form>"; // Cerrar formulario
 
         // Cerrar declaración de mesas
         $stmt_mesas->close();
