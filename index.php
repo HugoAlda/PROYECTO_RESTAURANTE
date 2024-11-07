@@ -20,11 +20,10 @@ session_start();
         <br>
         <label>Contraseña:</label>
         <input type="password" id="pwd" name="pwd" placeholder="Contraseña" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
-        <span class="error" id="errorContraseña"></span>
-        <br>
         <?php
             if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "<span style='color: red;'>Usuario o contraseña incorrectos</span>";}
         ?>
+        <span class="error" id="errorContraseña"></span>
         <br>
         <input type="submit" value="Enviar" id="enviar" name="enviar">
     </form>
