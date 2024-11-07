@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("login");
 
     // Agregamos un evento de escucha para que se ejecute cuando se envia el formulario
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("blur", function (event) {
         
         let hasErrors = false;
         const username = document.getElementById("username").value.trim();
