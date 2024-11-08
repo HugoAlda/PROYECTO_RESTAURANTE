@@ -45,7 +45,7 @@
                         $total_mesas = $fila['total_mesas'];
                         $mesas_libres = $fila['mesas_libres'];
                         echo "<input type='submit' name='sala' value='$nombre_sala' class='input_sala input_$nombre_sala'>";
-                        echo "<span class='mesas_disponibles_$nombre_sala'>($mesas_libres/$total_mesas)</span>";
+                        echo "<p class='input_sala2 mesas_disponibles_$nombre_sala'>($mesas_libres/$total_mesas)</p>";
                     }
                 } else {
                     echo "<p>No hay salas disponibles</p>";
