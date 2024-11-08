@@ -62,6 +62,7 @@
     <div class="contenedor">
         <div class="footer">
             <a href="../index.php"><button type="submit" class="logout">Cerrar Sesión</button></a>
+            <a href="./historial"><button type="submit" class="Historial">Historial</button></a>
             <h1>¡Selecciona una sala para ver su disponibilidad de mesas!</h1>
         </div>
         <div class="contenedor-superior">
