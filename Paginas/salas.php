@@ -25,7 +25,7 @@
             $consulta = "
                 SELECT s.name_sala, 
                        COUNT(m.id_mesa) AS total_mesas, 
-                       SUM(CASE WHEN h.fecha_NA IS NULL THEN 1 ELSE 0 END) AS mesas_libres
+                       SUM(CASE WHEN h.fecha_A IS NULL THEN 1 ELSE 0 END) AS mesas_libres
                 FROM tbl_salas s
                 LEFT JOIN tbl_mesas m ON s.id_salas = m.id_sala
                 LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
@@ -45,7 +45,7 @@
                         $total_mesas = $fila['total_mesas'];
                         $mesas_libres = $fila['mesas_libres'];
                         echo "<input type='submit' name='sala' value='$nombre_sala' class='input_sala input_$nombre_sala'>";
-                        echo "<span class='mesas_disponibles_$nombre_sala'>($mesas_libres/$total_mesas)</span>";
+                        echo "<p class='input_sala2 mesas_disponibles_$nombre_sala'>($mesas_libres/$total_mesas)</p>";
                     }
                 } else {
                     echo "<p>No hay salas disponibles</p>";
