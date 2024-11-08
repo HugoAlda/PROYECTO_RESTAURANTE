@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesas de la Sala</title>
+    <link rel="stylesheet" href="../CSS/estilos-mesas.css">
     <style>
         .btn-verde {
             background-color: green;
@@ -27,7 +28,6 @@
 </head>
 <body>
 
-<a href="salas.php"><button class="back">Volver a salas</button></a>
 
 <?php
 require_once "../Procesos/conection.php";
@@ -83,42 +83,30 @@ if (isset($_SESSION['sala'])) {
         echo "<h2>Mesas en: $nombre_sala</h2>";
         echo "<form action='./asignar_mesa.php' method='POST'>";
 
-        if ($_SESSION['sala'] === 'Terraza 1'){
-            echo '<img src="../CSS/img/Cesped.png" alt="terraza1" id="terraza1foto">';
-        }
-
-        if ($_SESSION['sala'] === 'Terraza 2'){
-            echo '<img src="../CSS/img/Cesped.png" alt="terraza2" id="terraza2foto">';
+        if ($_SESSION['sala'] === 'Terraza_1' || $_SESSION['sala'] === 'Terraza_2'){
+            echo "<div class='terrazafoto'>";
+            echo '<img src="../CSS/img/Cesped.png" alt="" id="terrazafoto">';
+            echo "</div>";
         }
 
         if ($_SESSION['sala'] === 'Jardín'){
-            echo '<img src="../CSS/img/Cesped_largo.png" alt="jardin" id="jardinfoto">';
+            echo "<div class='jardinfoto'>";
+            echo '<img src="../CSS/img/Cesped_largo.png" alt="" id="jardinfoto">';
+            echo "</div>";
         }
 
-        if ($_SESSION['sala'] === 'Comedor 1'){
-            echo '<img src="../CSS/img/Madera.png" alt="jardin" id="comedor1foto">';
+        if ($_SESSION['sala'] === 'Comedor_1' || $_SESSION['sala'] === 'Comedor_2'){
+            echo "<div id=''>";
+            echo '<img src="../CSS/img/Madera.png" alt="" id="comedorfoto">';
+            echo "</div>";
         }
 
-
-        if ($_SESSION['sala'] === 'Comedor 2'){
-            echo '<img src="../CSS/img/Madera.png" alt="jardin" id="comedor2foto">';
+        if ($_SESSION['sala'] === 'Salón_VIP' || $_SESSION['sala'] === 'Salón_VIP_2' || $_SESSION['sala'] === 'Salón_romántico' || $_SESSION['sala'] === 'Naturaleza'){
+            echo "<div id=''>";
+            echo '<img src="../CSS/img/Racholas.png" alt="" id="reservaofoto">';
+            echo "</div>";
         }
 
-        if ($_SESSION['sala'] === 'Salón VIP'){
-            echo '<img src="../CSS/img/Racholas.png" alt="jardin" id="salonvipfoto">';
-        }
-
-        if ($_SESSION['sala'] === 'Salón VIP 2'){
-            echo '<img src="../CSS/img/Racholas.png" alt="jardin" id="salonvip2foto">';
-        }
-
-        if ($_SESSION['sala'] === 'Salón romántico'){
-            echo '<img src="../CSS/img/Racholas.png" alt="jardin" id="salonromanticofoto">';
-        }
-
-        if ($_SESSION['sala'] === 'Naturaleza'){
-            echo '<img src="../CSS/img/Racholas.png" alt="jardin" id="naturalezafoto">';
-        }
 
 
 
@@ -155,6 +143,7 @@ if (isset($_SESSION['sala'])) {
 // Cerrar conexión
 $conn->close();
 ?>
+<a href="salas.php"><button class="back">Volver a salas</button></a>
 
 </body>
 </html>
