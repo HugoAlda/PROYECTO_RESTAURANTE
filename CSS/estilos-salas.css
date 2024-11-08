@@ -1,6 +1,25 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(220, 213, 194);
+}
+
+.logout {
+    background-color: #3185ec;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none; /* Elimina el subrayado */
+    display: inline-block; /* Asegura que se comporte como un botón */
+}
+
+.logout:hover {
+    background-color: #ec3131;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-decoration: none; /* Asegura que tampoco esté subrayado al pasar el mouse */
 }
 
 /* Contenedor principal */
@@ -46,13 +65,17 @@ body {
 }
 
 .input_sala2 {
-    position: absolute; /* Colocación sobre la imagen */
-    padding: 10px;
-    /* background-color: transparent; Fondo transparente */
+    position: absolute;
+    display: flex; /* Utilizamos flexbox para centrar el contenido */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    text-align: center;
     cursor: pointer;
-    transition: background-color 0.3s;
-    z-index: 2; /* Asegura que los botones estén encima de la imagen */
-    border: transparent;
+    z-index: 2;
+    border: none;
+    background-color: transparent; /* Fondo transparente */
+    color: white; /* Asegúrate de que el texto sea visible */
+    padding-left: 12px;
 }
 
 /* Efecto al pasar el mouse sobre los botones */
@@ -129,9 +152,8 @@ body {
     left: 27.9%;
     width: 20.6%;
     height: 65.3%;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Comedor_2 {
@@ -139,31 +161,26 @@ body {
     left: 50%;
     width: 20.5%;
     height: 65.3%;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Terraza_1 {
-    top: 26.4%;
-    left: 17.8%;
-    width: 10.3%;
-    height: 47.1%;
-    border: 2px solid black;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    top: 24.2%;
+    left: 17.5%;
+    width: 8.9%;
+    height: 44%;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Terraza_2 {
-    top: 26.4%;
-    left: 72%;
-    width: 10.2%;
-    height: 47.1%;
-    border: 2px solid black;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    top: 24.2%;
+    left: 72.1%;
+    width: 8.9%;
+    height: 44%;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Salon_VIP {
@@ -171,9 +188,8 @@ body {
     left: 17.5%;
     width: 8.9%;
     height: 18.3%;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Salon_VIP_2 {
@@ -181,42 +197,35 @@ body {
     left: 72.1%;
     width: 8.9%;
     height: 18.3%;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Jardin {
-    top: 73.5%;
-    left: 28.2%;
-    width: 43.7%;
-    height: 21.4%;
-    border: 2px solid black;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    top: 71.3%;
+    left: 28.1%;
+    width: 42.2%;
+    height: 18.3%;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Naturaleza {
-    top: 73.5%;
-    left: 17.8%;
-    height: 21.4%;
-    width: 10.4%;
-    border: 2px solid black;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    top: 71.3%;
+    left: 17.5%;
+    height: 18.3%;
+    width: 8.9%;
+    color: white;
+    font-size: 30px;
 }
 
 .mesas_disponibles_Salon_romantico {
-    top: 73.5%;
-    left: 71.9%;
-    height: 21.4%;
-    width: 10.3%;
-    border: 2px solid black;
-    text-align: center; 
-    align-items: center; 
-    justify-content: center;
+    top: 71.3%;
+    left: 72.1%;
+    height: 18.2%;
+    width: 8.9%;
+    color: white;
+    font-size: 30px;
 }
 
 /* Footer */

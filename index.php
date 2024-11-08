@@ -13,6 +13,10 @@ session_start();
     <title>Bienvenido</title>
 </head>
 <body>
+    <div class="imgIndex">
+        <img src="./CSS/img/logo.png" alt="Imagen descriptiva">
+    </div>
+
     <form id="login" class="login" method="POST" action="./Procesos/procesoLogin.php">
         <label>Nombre de usuario:</label>
         <input type="text" id="username" name="username" placeholder="Nombre de usuario" <?php if(isset($_GET["error"]) && $_GET["error"] === "datosMal"){echo "style='border-color: red;'";} ?>>
