@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesas de la Sala</title>
+    <link rel="stylesheet" href="../CSS/estilos-mesas.css">
     <style>
         .btn-verde {
             background-color: green;
@@ -27,7 +28,6 @@
 </head>
 <body>
 
-<a href="salas.php"><button class="back">Volver a salas</button></a>
 
 <?php
 require_once "../Procesos/conection.php";
@@ -78,9 +78,37 @@ if (isset($_SESSION['sala'])) {
         $stmt_mesas->execute();
         $resultado_mesas = $stmt_mesas->get_result();
 
+        
         // Mostrar mesas como botones
         echo "<h2>Mesas en: $nombre_sala</h2>";
         echo "<form action='./asignar_mesa.php' method='POST'>";
+
+        if ($_SESSION['sala'] === 'Terraza_1' || $_SESSION['sala'] === 'Terraza_2'){
+            echo "<div class='terrazafoto'>";
+            echo '<img src="../CSS/img/Cesped.png" alt="" id="terrazafoto">';
+            echo "</div>";
+        }
+
+        if ($_SESSION['sala'] === 'Jardín'){
+            echo "<div class='jardinfoto'>";
+            echo '<img src="../CSS/img/Cesped_largo.png" alt="" id="jardinfoto">';
+            echo "</div>";
+        }
+
+        if ($_SESSION['sala'] === 'Comedor_1' || $_SESSION['sala'] === 'Comedor_2'){
+            echo "<div id=''>";
+            echo '<img src="../CSS/img/Madera.png" alt="" id="comedorfoto">';
+            echo "</div>";
+        }
+
+        if ($_SESSION['sala'] === 'Salón_VIP' || $_SESSION['sala'] === 'Salón_VIP_2' || $_SESSION['sala'] === 'Salón_romántico' || $_SESSION['sala'] === 'Naturaleza'){
+            echo "<div id=''>";
+            echo '<img src="../CSS/img/Racholas.png" alt="" id="reservaofoto">';
+            echo "</div>";
+        }
+
+
+
 
         if ($resultado_mesas->num_rows > 0) {
             while ($mesa = $resultado_mesas->fetch_assoc()) {
@@ -115,6 +143,7 @@ if (isset($_SESSION['sala'])) {
 // Cerrar conexión
 $conn->close();
 ?>
+<a href="salas.php"><button class="back">Volver a salas</button></a>
 
 </body>
 </html>

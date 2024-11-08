@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("login");
 
     // Agregamos un evento de escucha para que se ejecute cuando se envia el formulario
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("blur", function (event) {
         
         let hasErrors = false;
         const username = document.getElementById("username").value.trim();
@@ -29,17 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
             hasErrors = true;
         }
 
-        if (username.length < 3) {
-            errors.username.push("- El nombre de usuario debe contener mínimo 3 caracteres.");
-            hasErrors = true;
-        }
+        // if (username.length < 3) {
+        //     errors.username.push("- El nombre de usuario debe contener mínimo 3 caracteres.");
+        //     hasErrors = true;
+        // }
 
-        // Sin números
-        const nums = /[0-9]/;
-        if (nums.test(username)) {
-            errors.username.push("- El nombre de usuario no puede contener números.");
-            hasErrors = true;
-        }
+        // // Sin números
+        // const nums = /[0-9]/;
+        // if (nums.test(username)) {
+        //     errors.username.push("- El nombre de usuario no puede contener números.");
+        //     hasErrors = true;
+        // }
 
         // VALIDACIÓN CONTRASEÑA
         // Campo vacío
@@ -48,32 +48,32 @@ document.addEventListener("DOMContentLoaded", function () {
             hasErrors = true;
         }
 
-        // Más de 8 caracteres
-        if (password.length < 8) {
-            errors.password.push("- La contraseña debe tener más de 8 caracteres.");
-            hasErrors = true;
-        }
+        // // Más de 8 caracteres
+        // if (password.length < 8) {
+        //     errors.password.push("- La contraseña debe tener más de 8 caracteres.");
+        //     hasErrors = true;
+        // }
 
-        // Contener 1 numero
-        const num = /[0-9]/;
-        if (!num.test(password)) {
-            errors.password.push("- La contraseña debe contener al menos un número.");
-            hasErrors = true;
-        }
+        // // Contener 1 numero
+        // const num = /[0-9]/;
+        // if (!num.test(password)) {
+        //     errors.password.push("- La contraseña debe contener al menos un número.");
+        //     hasErrors = true;
+        // }
 
-        // Contener 1 mayúscula
-        const mayus = /[A-Z]/;
-        if (!mayus.test(password)) {
-            errors.password.push("- La contraseña debe contener al menos una letra mayúscula.");
-            hasErrors = true;
-        }
+        // // Contener 1 mayúscula
+        // const mayus = /[A-Z]/;
+        // if (!mayus.test(password)) {
+        //     errors.password.push("- La contraseña debe contener al menos una letra mayúscula.");
+        //     hasErrors = true;
+        // }
 
-        // Contener 1 minúscula
-        const minus = /[a-z]/;
-        if (!minus.test(password)) {
-            errors.password.push("- La contraseña debe contener al menos una letra minúscula.");
-            hasErrors = true;
-        }
+        // // Contener 1 minúscula
+        // const minus = /[a-z]/;
+        // if (!minus.test(password)) {
+        //     errors.password.push("- La contraseña debe contener al menos una letra minúscula.");
+        //     hasErrors = true;
+        // }
 
         if (hasErrors) {
             // Mostramos todos los errores acumulados
