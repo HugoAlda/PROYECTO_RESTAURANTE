@@ -1,0 +1,93 @@
+
+.terrazafoto,
+.jardinfoto,
+.comedorfoto,
+.reservaofoto {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    width: 80%; /* Ajuste de ancho para mejor visibilidad */
+    max-width: 800px; /* Tamaño máximo para asegurar la adaptabilidad */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de fondo centrada */
+.terrazafoto img,
+.jardinfoto img,
+.comedorfoto img,
+.reservaofoto img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Estilos para los botones de las mesas */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Clases para los botones de mesas según el estado */
+.btn-verde {
+    background-color: #28a745;
+}
+.btn-verde:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.btn-rojo {
+    background-color: #dc3545;
+}
+.btn-rojo:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* Posicionamiento de los botones de las mesas dentro de la imagen */
+button:nth-child(1) { top: 20%; left: 30%; }
+button:nth-child(2) { top: 20%; right: 30%; }
+button:nth-child(3) { top: 50%; left: 25%; }
+button:nth-child(4) { top: 50%; right: 25%; }
+button:nth-child(5) { top: 80%; left: 50%; transform: translateX(-50%); }
+
+/* Estilo para el título */
+h2 {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+/* Contenedor para centrar el botón debajo de la imagen */
+.volver-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estilos del botón "Volver a salas" */
+.back {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #6c757d;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.back:hover {
+    background-color: #5a6268;
+    transform: scale(1.05);
+}
