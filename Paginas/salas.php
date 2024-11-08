@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/estilos-salas.css">
-    <title>TPV Simulado</title>
+    <title>TPV Salas</title>
 </head>
 <body>
     <form action="./mesas.php" method="POST">
@@ -12,29 +12,40 @@
             <?php
             require_once "../Procesos/conection.php";
             session_start();
-            
-            // Sesion
+
+            // Sesión
             if (!isset($_SESSION["camareroID"])) {
                 header('Location: ../index.php?error=nosesion');
                 exit();
             } else {
                 $id_user = $_SESSION["camareroID"];
             }
-        
-            // Consulta SQL para obtener las salas usando una sentencia preparada
-            $consulta = "SELECT name_sala FROM tbl_salas";
+
+            // Consulta SQL para obtener las salas y contar las mesas libres
+            $consulta = "
+                SELECT s.name_sala, 
+                       COUNT(m.id_mesa) AS total_mesas, 
+                       SUM(CASE WHEN h.fecha_NA IS NULL THEN 1 ELSE 0 END) AS mesas_libres
+                FROM tbl_salas s
+                LEFT JOIN tbl_mesas m ON s.id_salas = m.id_sala
+                LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
+                GROUP BY s.id_salas
+            ";
             $stmt = $conn->prepare($consulta);
-        
+
             // Ejecutar la consulta
             if ($stmt->execute()) {
                 // Obtener los resultados
                 $resultado = $stmt->get_result();
-            
-                // Generación de botones para cada sala
+
+                // Generación de botones para cada sala con el conteo de mesas libres
                 if ($resultado->num_rows > 0) {
                     while ($fila = $resultado->fetch_assoc()) {
                         $nombre_sala = htmlspecialchars($fila['name_sala']); // Sanitizar el nombre de la sala
-                        echo "<input type='submit' name='sala' value='$nombre_sala' class='input'>";
+                        $total_mesas = $fila['total_mesas'];
+                        $mesas_libres = $fila['mesas_libres'];
+                        echo "<input type='submit' name='sala' value='$nombre_sala' class='input_sala input_$nombre_sala'>";
+                        echo "<span class='mesas_disponibles_$nombre_sala'>($mesas_libres/$total_mesas)</span>";
                     }
                 } else {
                     echo "<p>No hay salas disponibles</p>";
@@ -42,23 +53,21 @@
             } else {
                 echo "<p>Error al ejecutar la consulta</p>";
             }
-        
+
             // Cerrar la declaración y la conexión
             $stmt->close();
             ?>
         </div>
     </form>
     <div class="contenedor">
+        <div class="footer">
+            <a href="../index.php"><button type="submit" class="logout">Cerrar Sesión</button></a>
+            <h1>¡Selecciona una sala para ver su disponibilidad de mesas!</h1>
+        </div>
         <div class="contenedor-superior">
             <div class="mapeado">
-                <img src="../CSS/img/MapeadoRestaurante.png">
+                <!-- La imagen está como fondo -->
             </div>
-            <div class="mesas">
-                <h1>Mesas</h1>
-            </div>
-        </div>
-        <div class="footer">
-            <a href="../index.php"><button class="logout">Cerrar Sesión</button></a>
         </div>
     </div>
 </body>

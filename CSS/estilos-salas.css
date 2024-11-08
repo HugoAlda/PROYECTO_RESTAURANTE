@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
@@ -14,36 +14,202 @@ body{
 .contenedor-superior {
     display: flex;
     width: 100%;
-    height: 90%; /* Ocupa el 80% de la altura */
-}
-
-/* Div mapeado */
-.mapeado {
-    width: 70%; /* 70% del ancho */
-    height: 100%; /* Ocupa el 100% de la altura asignada en .contenedor-superior */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.mapeado>img{
-    width: 100%;
-    height: 100%;
-}
-
-/* Div mesas */
-.mesas {
-    width: 30%; /* 30% del ancho */
-    height: 100%; /* Ocupa el 100% de la altura asignada en .contenedor-superior */
-    display: flex;
-}
-
-/* Footer */
-.footer {
-    width: 100%; /* 100% del ancho */
-    height: 10%; /* Ocupa el 20% de la altura */
-    display: flex;
+    height: 90%; /* Ajusta el tamaño general de la sección superior */
+    text-align: center;
     align-items: center;
     justify-content: center;
-    background-color: #f1f1f1; /* Color de fondo opcional */
+    position: relative;
+}
+
+/* Mapeado con imagen de fondo */
+.mapeado {
+    width: 100%; /* Ajusta el ancho según lo necesites */
+    height: 100%; /* Ajusta la altura según lo necesites */
+    background-size: contain; /* Hace que la imagen se ajuste dentro del div */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1; /* Asegura que la imagen quede detrás de los inputs */
+    background-image: url(../CSS/img/MapeadoRestaurante.png);
+}
+
+/* Los inputs de las salas estarán dentro de este contenedor, que tiene z-index alto */
+.input_sala {
+    position: absolute; /* Colocación sobre la imagen */
+    padding: 10px;
+    background-color: transparent; /* Fondo transparente */
+    color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 2; /* Asegura que los botones estén encima de la imagen */
+    border: transparent;
+}
+
+/* Efecto al pasar el mouse sobre los botones */
+.input_sala:hover {
+    background-color: rgba(0, 0, 0, 0.309);
+}
+
+/* Ubicaciones absolutas de cada sala */
+.input_Comedor_1 {
+    top: 5%;
+    left: 28%;
+    width: 22%;
+    height: 68.5%;
+}
+
+.input_Comedor_2 {
+    top: 5%;
+    left: 50%;
+    width: 22%;
+    height: 68.5%;
+}
+
+.input_Terraza_1 {
+    top: 26.4%;
+    left: 17.8%;
+    width: 10.3%;
+    height: 47.1%;
+}
+
+.input_Terraza_2 {
+    top: 26.4%;
+    left: 72%;
+    width: 10.2%;
+    height: 47.1%;
+}
+
+.input_Salon_VIP {
+    top: 5%;
+    left: 17.8%;
+    width: 10.3%;
+    height: 21.6%;
+}
+
+.input_Salon_VIP_2 {
+    top: 5%;
+    left: 72%;
+    width: 10.2%;
+    height: 21.5%;
+}
+
+.input_Jardin {
+    top: 73.5%;
+    left: 28.2%;
+    width: 43.7%;
+    height: 21.4%;
+}
+
+.input_Naturaleza {
+    top: 73.5%;
+    left: 17.8%;
+    height: 21.4%;
+    width: 10.4%;
+}
+
+.input_Salon_romantico {
+    top: 73.5%;
+    left: 71.9%;
+    height: 21.4%;
+    width: 10.3%;
+}
+
+.mesas_disponibles_Comedor_1 {
+    top: 5%;
+    left: 28%;
+    width: 22%;
+    height: 68.5%;
+}
+
+.mesas_disponibles_Comedor_2 {
+    top: 5%;
+    left: 50%;
+    width: 22%;
+    height: 68.5%;
+}
+
+.mesas_disponibles_Terraza_1 {
+    top: 26.4%;
+    left: 17.8%;
+    width: 10.3%;
+    height: 47.1%;
+}
+
+.mesas_disponibles_Terraza_2 {
+    top: 26.4%;
+    left: 72%;
+    width: 10.2%;
+    height: 47.1%;
+}
+
+.mesas_disponibles_Salon_VIP {
+    top: 5%;
+    left: 17.8%;
+    width: 10.3%;
+    height: 21.6%;
+}
+
+.mesas_disponibles_Salon_VIP_2 {
+    top: 5%;
+    left: 72%;
+    width: 10.2%;
+    height: 21.5%;
+}
+
+.mesas_disponibles_Jardin {
+    top: 73.5%;
+    left: 28.2%;
+    width: 43.7%;
+    height: 21.4%;
+}
+
+.mesas_disponibles_Naturaleza {
+    top: 73.5%;
+    left: 17.8%;
+    height: 21.4%;
+    width: 10.4%;
+}
+
+.mesas_disponibles_Salon_romantico {
+    top: 73.5%;
+    left: 71.9%;
+    height: 21.4%;
+    width: 10.3%;
+}
+
+
+/* Footer */
+
+h1 {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    width: 100%; /* Asegura que el h1 ocupe todo el ancho de su contenedor */
+    height: 100%; /* Asegura que el h1 ocupe todo el alto de su contenedor */
+    margin-top: 0;
+    margin-left: -5.5%; /* Elimina márgenes para evitar desplazamientos */
+}
+
+.footer {
+    width: 100%; /* 100% del ancho */
+    height: 5%;  /* Ajusta la altura del footer */
+    display: flex;
+    position: relative;  /* Necesario para que el z-index funcione */
+    z-index: 10; /* Asegura que el footer esté por encima del mapeado */
+}
+
+/* Asegura que el enlace se muestre correctamente */
+.footer > a {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: center;
+    position: relative;  /* Hace que el z-index funcione aquí también */
+    z-index: 20; /* Establece un z-index alto para el enlace */
+}
+
+/* Asegura que el botón esté por encima de la imagen de fondo */
+.logout {
+    position: relative;
+    z-index: 30; /* Asegura que el botón esté por encima de otros elementos */
 }
