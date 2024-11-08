@@ -66,14 +66,13 @@ if (isset($_SESSION['sala'])) {
         // Consultar las mesas en esa sala
         $stmt_mesas = $conn->prepare("
         SELECT m.id_mesa, m.n_asientos, 
-        CASE 
+        CASE
             WHEN h.fecha_NA IS NULL AND h.id_mesa IS NOT NULL THEN 'Asignada'
             ELSE 'No Asignada'
         END AS estado_mesa
         FROM tbl_mesas m
         LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
         WHERE m.id_sala = ?
-        GROUP BY m.id_mesa
         "); 
         $stmt_mesas->bind_param("i", $id_sala);
         $stmt_mesas->execute();

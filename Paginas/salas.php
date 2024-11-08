@@ -13,7 +13,7 @@
             require_once "../Procesos/conection.php";
             session_start();
 
-            // Sesion
+            // Sesión
             if (!isset($_SESSION["camareroID"])) {
                 header('Location: ../index.php?error=nosesion');
                 exit();
@@ -21,8 +21,16 @@
                 $id_user = $_SESSION["camareroID"];
             }
 
-            // Consulta SQL para obtener las salas usando una sentencia preparada
-            $consulta = "SELECT name_sala FROM tbl_salas";
+            // Consulta SQL para obtener las salas y contar las mesas libres
+            $consulta = "
+                SELECT s.name_sala, 
+                       COUNT(m.id_mesa) AS total_mesas, 
+                       SUM(CASE WHEN h.fecha_NA IS NULL THEN 1 ELSE 0 END) AS mesas_libres
+                FROM tbl_salas s
+                LEFT JOIN tbl_mesas m ON s.id_salas = m.id_sala
+                LEFT JOIN tbl_historial h ON m.id_mesa = h.id_mesa AND h.fecha_NA IS NULL
+                GROUP BY s.id_salas
+            ";
             $stmt = $conn->prepare($consulta);
 
             // Ejecutar la consulta
@@ -30,11 +38,14 @@
                 // Obtener los resultados
                 $resultado = $stmt->get_result();
 
-                // Generación de botones para cada sala
+                // Generación de botones para cada sala con el conteo de mesas libres
                 if ($resultado->num_rows > 0) {
                     while ($fila = $resultado->fetch_assoc()) {
                         $nombre_sala = htmlspecialchars($fila['name_sala']); // Sanitizar el nombre de la sala
+                        $total_mesas = $fila['total_mesas'];
+                        $mesas_libres = $fila['mesas_libres'];
                         echo "<input type='submit' name='sala' value='$nombre_sala' class='input_sala input_$nombre_sala'>";
+                        echo "<span class='mesas_disponibles_$nombre_sala'>($mesas_libres/$total_mesas)</span>";
                     }
                 } else {
                     echo "<p>No hay salas disponibles</p>";
