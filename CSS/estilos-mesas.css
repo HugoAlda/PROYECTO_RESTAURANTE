@@ -53,13 +53,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Posicionamiento de los botones de las mesas dentro de la imagen */
-button:nth-child(1) { top: 20%; left: 30%; }
-button:nth-child(2) { top: 20%; right: 30%; }
-button:nth-child(3) { top: 50%; left: 25%; }
-button:nth-child(4) { top: 50%; right: 25%; }
-button:nth-child(5) { top: 80%; left: 50%; transform: translateX(-50%); }
-
 /* Estilo para el título */
 h2 {
     text-align: center;
