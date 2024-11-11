@@ -22,7 +22,6 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
     <meta charset="UTF-8">
     <title>Historial de Mesas</title>
     <link rel="stylesheet" href="../CSS/estilos-historial.css">
-    <script src="../JS/historial.js"></script>
 </head>
 <body>
 <a href="salas.php"><button class="back">Volver a salas</button></a>
@@ -114,7 +113,7 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
 
     <h3>Historial de Mesa <?php echo $selectedTable; ?></h3>
     <?php
-    // Query to fetch history for the selected table with filtering options
+    // Consulta SQL base
     $sql = "
         SELECT h.fecha_A, h.fecha_NA, c.name_camarero, c.surname_camarero, h.assigned_to
         FROM tbl_historial h
@@ -122,29 +121,30 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
         WHERE h.id_mesa = ?
     ";
 
-    // Apply filters if they are set
+    // Variables para el almacenamiento de parámetros
+    $parametros = [$selectedTable];
+    $tipos = "i";
+
+    // Aplicar filtros si están configurados
     if ($filterDate) {
         $sql .= " AND DATE(h.fecha_A) = ?";
+        $parametros[] = $filterDate;
+        $tipos .= "s"; // Tipo de dato string para la fecha
     }
+
     if ($filterCamarero) {
         $sql .= " AND h.assigned_by = ?";
+        $parametros[] = $filterCamarero;
+        $tipos .= "i"; // Tipo de dato entero para el id del camarero
     }
 
     $sql .= " ORDER BY h.fecha_A DESC";
 
-    // Prepare and execute the query
+    // Preparar y ejecutar la consulta
     $stmt_history = $conn->prepare($sql);
 
-    if ($filterDate && $filterCamarero) {
-        $stmt_history->bind_param("iis", $selectedTable, $filterDate, $filterCamarero);
-    } elseif ($filterDate) {
-        $stmt_history->bind_param("is", $selectedTable, $filterDate);
-    } elseif ($filterCamarero) {
-        $stmt_history->bind_param("ii", $selectedTable, $filterCamarero);
-    } else {
-        $stmt_history->bind_param("i", $selectedTable);
-    }
-
+    // Vincular dinámicamente los parámetros
+    $stmt_history->bind_param($tipos, ...$parametros);
     $stmt_history->execute();
     $result_history = $stmt_history->get_result();
 
