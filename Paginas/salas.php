@@ -7,7 +7,7 @@
     <title>TPV Salas</title>
 </head>
 <body>
-    <form action="./mesas.php" method="POST">
+    <form action="./mesas.php" method="POST" id="fomruarioDiv">
         <div class="container">
             <?php
                 require_once "../Procesos/conection.php";
@@ -61,9 +61,7 @@
             <h1>¡Selecciona una sala para ver su disponibilidad de mesas!</h1>
         </div>
         <div class="contenedor-superior">
-            <div class="mapeado">
-                <!-- La imagen está como fondo -->
-            </div>
+            <img src="../CSS/img/MapeadoRestaurante.png" alt="" class="mapeado">
         </div>
     </div>
 </body>
