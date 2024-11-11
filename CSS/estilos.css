@@ -18,7 +18,7 @@ body {
 }
 
 .imgIndex, .login {
-    width: 50%; /* Cada lado ocupa el 50% del ancho de la pantalla */
+    width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -26,13 +26,13 @@ body {
 }
 
 .imgIndex {
-    background-color: #f0f0f0; /* Fondo de la izquierda (si se necesita) */
+    background-color: #f0f0f0;
 }
 
 .imgIndex img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* La imagen cubre toda la mitad izquierda */
+    object-fit: cover;
 }
 
 .login {
@@ -89,22 +89,22 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Cambiar la dirección del contenedor a columna */
+        flex-direction: column;
     }
 
     .imgIndex, .login {
-        width: 100%; /* Hacer ambos elementos ocupar el 100% en pantallas pequeñas */
+        width: 100%;
     }
 
     .imgIndex {
-        height: 50%; /* Ajustar la altura de la imagen para que ocupe la mitad del contenedor */
-        padding-bottom: 0; /* Eliminar el espacio inferior cuando se ubique encima del formulario */
+        height: 50%;
+        padding-bottom: 0;
     }
 
     .imgIndex img {
-        width: 100%; /* La imagen ocupa todo el ancho */
-        height: 100%; /* La imagen ocupa toda la altura de su contenedor */
-        object-fit: cover; /* Mantener la imagen de fondo cubriendo el contenedor */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .login {

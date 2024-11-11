@@ -1,25 +1,51 @@
 
-.terrazafoto,
-.jardinfoto,
-.comedorfoto,
-.reservaofoto {
+.terrazafoto {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    width: 60%; /* Ajuste de ancho para mejor visibilidad */
+    height: 240px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(186, 147, 147, 0.2);
+}
+.jardinfoto {
     display: flex;
     justify-content: center;
     position: relative;
     margin: 0 auto;
     width: 80%; /* Ajuste de ancho para mejor visibilidad */
-    max-width: 800px; /* Tamaño máximo para asegurar la adaptabilidad */
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
+.reservaofoto {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    width: 40%; /* Ajuste de ancho para mejor visibilidad */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.comedorfoto {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+    width: 80%; /* Ajuste de ancho para mejor visibilidad */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
 /* Imagen de fondo centrada */
 .terrazafoto img,
 .jardinfoto img,
 .comedorfoto img,
 .reservaofoto img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px;
 }
 
@@ -53,12 +79,6 @@ button {
     transform: scale(1.05);
 }
 
-/* Posicionamiento de los botones de las mesas dentro de la imagen */
-button:nth-child(1) { top: 20%; left: 30%; }
-button:nth-child(2) { top: 20%; right: 30%; }
-button:nth-child(3) { top: 50%; left: 25%; }
-button:nth-child(4) { top: 50%; right: 25%; }
-button:nth-child(5) { top: 80%; left: 50%; transform: translateX(-50%); }
 
 /* Estilo para el título */
 h2 {

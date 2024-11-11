@@ -13,7 +13,7 @@ CREATE TABLE tbl_camarero (
 CREATE TABLE tbl_salas (
     id_salas INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name_sala VARCHAR(15) NOT NULL,
-    tipo_sala ENUM("Comedor", "Terraza", "Privado") NOT NULL
+    tipo_sala ENUM("Comedor", "Terraza", "VIP") NOT NULL
 );
 
 CREATE TABLE tbl_mesas (
@@ -48,46 +48,61 @@ INSERT INTO tbl_salas (name_sala, tipo_sala)
 VALUES
 ('Comedor_1', 'Comedor'),
 ('Terraza_1', 'Terraza'),
-('Salon_VIP', 'Privado'),
+('Salon_VIP', 'VIP'),
 ('Comedor_2', 'Comedor'),
 ('Jardin', 'Terraza'),
 ('Terraza_2', 'Terraza'),
-('Salon_VIP_2', 'Privado'),
-('Salon_romantico', 'Privado'),
-('Naturaleza', 'Privado');
+('Salon_VIP_2', 'VIP'),
+('Salon_romantico', 'VIP'),
+('Naturaleza', 'VIP');
 
 -- Inserciones en la tabla tbl_mesas
 INSERT INTO tbl_mesas (n_asientos, id_sala) VALUES
-(4, 1),
+-- Comedor_1 
 (6, 1),
-(8, 1),
-(2, 1),
-(4, 2),
-(6, 2),
-(8, 2),
-(2, 3),
-(4, 3),
-(6, 3),
-(8, 3),
-(4, 4),
+(6, 1),
+(4, 1),
+(4, 1),
+
+-- Comedor_2 
 (6, 4),
-(2, 4),
-(8, 5),
-(4, 5),
-(6, 5),
-(2, 5),
-(4, 6),
-(6, 6),
-(8, 6),
-(2, 7),
-(4, 7),
-(6, 7),
-(8, 8),
-(4, 8),
-(6, 8),
+(6, 4),
+(4, 4),
+(4, 4),
+
+-- Naturaleza 
 (2, 9),
-(4, 9),
-(6, 9);
+(2, 9),
+(2, 9),
+
+-- Salon_VIP 
+(2, 3),
+(2, 3),
+(2, 3),
+
+-- Salon_VIP_2 
+(2, 7),
+(2, 7),
+(2, 7),
+
+-- Salon_romantico 
+(2, 8),
+
+-- Terraza_1 
+(2, 2),
+(4, 2),
+(4, 2),
+
+-- Terraza_2 
+(6, 6),
+(4, 6),
+
+-- Jardin 
+(4, 5),
+(4, 5),
+(2, 5),
+(2, 5),
+(6, 5);
 
 INSERT INTO tbl_historial (fecha_A, fecha_NA, assigned_by, assigned_to, id_mesa) 
 VALUES 
