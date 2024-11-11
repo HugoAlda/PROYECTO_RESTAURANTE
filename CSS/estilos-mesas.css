@@ -1,4 +1,7 @@
-
+form {
+    display: flex;
+    align-items: center;
+}
 .terrazafoto {
     display: flex;
     justify-content: center;
@@ -24,7 +27,7 @@
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 40%; /* Ajuste de ancho para mejor visibilidad */
+    width: 30%; /* Ajuste de ancho para mejor visibilidad */
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -34,8 +37,8 @@
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 75%; /* Ajuste de ancho para mejor visibilidad */
-    height: 400px;
+    width: 20%; /* Ajuste de ancho para mejor visibilidad */
+    height: 10%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -50,11 +53,12 @@
 }
 
 /* Estilos para los botones de las mesas */
-button {
+form button {
     padding: 10px 20px;
     margin: 10px;
     border: none;
     border-radius: 5px;
+    height: 150px;
     font-size: 16px;
     color: white;
     cursor: pointer;
@@ -93,6 +97,8 @@ h2 {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    position: absolute;
+    
 }
 
 /* Estilos del botón "Volver a salas" */
