@@ -13,7 +13,7 @@ CREATE TABLE tbl_camarero (
 CREATE TABLE tbl_salas (
     id_salas INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name_sala VARCHAR(15) NOT NULL,
-    tipo_sala ENUM("Comedor", "Terraza", "Privado") NOT NULL
+    tipo_sala ENUM("Comedor", "Terraza", "VIP") NOT NULL
 );
 
 CREATE TABLE tbl_mesas (
@@ -48,13 +48,13 @@ INSERT INTO tbl_salas (name_sala, tipo_sala)
 VALUES
 ('Comedor_1', 'Comedor'),
 ('Terraza_1', 'Terraza'),
-('Salon_VIP', 'Privado'),
+('Salon_VIP', 'VIP'),
 ('Comedor_2', 'Comedor'),
 ('Jardin', 'Terraza'),
 ('Terraza_2', 'Terraza'),
-('Salon_VIP_2', 'Privado'),
-('Salon_romantico', 'Privado'),
-('Naturaleza', 'Privado');
+('Salon_VIP_2', 'VIP'),
+('Salon_romantico', 'VIP'),
+('Naturaleza', 'VIP');
 
 -- Inserciones en la tabla tbl_mesas
 INSERT INTO tbl_mesas (n_asientos, id_sala) VALUES
