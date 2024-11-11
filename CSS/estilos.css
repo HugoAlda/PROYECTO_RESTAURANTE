@@ -14,7 +14,7 @@ body {
 .container {
     display: flex;
     width: 100%;
-    height: 0vh;
+    height: 100vh;
 }
 
 .imgIndex, .login {
@@ -97,14 +97,14 @@ body {
     }
 
     .imgIndex {
-        height: auto; /* Ajustar la altura de la imagen cuando se mueva encima */
-        padding-bottom: 20px; /* Agregar algo de espacio entre la imagen y el formulario */
+        height: 50%; /* Ajustar la altura de la imagen para que ocupe la mitad del contenedor */
+        padding-bottom: 0; /* Eliminar el espacio inferior cuando se ubique encima del formulario */
     }
 
     .imgIndex img {
-        width: auto; /* No cambiar el tamaño de la imagen */
-        height: 150px; /* Ajustar la altura de la imagen en pantallas pequeñas */
-        object-fit: contain; /* Asegurarse de que la imagen mantenga su proporción */
+        width: 100%; /* La imagen ocupa todo el ancho */
+        height: 100%; /* La imagen ocupa toda la altura de su contenedor */
+        object-fit: cover; /* Mantener la imagen de fondo cubriendo el contenedor */
     }
 
     .login {
