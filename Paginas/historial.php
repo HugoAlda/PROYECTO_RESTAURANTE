@@ -32,7 +32,7 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
 <form method="post" action="historial.php">
     <label for="room">Seleccione una Sala:</label>
     <select name="room" id="room" onchange="this.form.submit()">
-        <option value="">Seleccione una Sala</option>
+        <option value="" disabled>Seleccione una Sala</option>
         <?php
         // Query to fetch rooms
         $stmt_rooms = $conn->prepare("SELECT id_salas, name_sala FROM tbl_salas");
@@ -52,9 +52,9 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
 <?php if ($SalaSeleccionada): ?>
     <!-- Table Selection Form (only shown if a room is selected) -->
     <form method="post" action="historial.php">
-        <label for="table">Seleccione una Mesa:</label>
+        <label for="table" >Seleccione una Mesa:</label>
         <select name="table" id="table" onchange="this.form.submit()">
-            <option value="">Seleccione una Mesa</option>
+            <option value="" disabled>Seleccione una Mesa</option>
             <?php
             // Query to fetch tables for the selected room, with their assignment status
             $stmt_tables = $conn->prepare("
@@ -94,7 +94,7 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
 
         <label for="filter_camarero">Filtrar por Camarero:</label>
         <select name="filter_camarero" id="filter_camarero" onchange="this.form.submit()">
-            <option value="">Seleccione un Camarero</option>
+            <option value="" disabled>Seleccione un Camarero</option>
             <?php
             // Query to fetch all camareros
             $stmt_camareros = $conn->prepare("SELECT id_camarero, name_camarero, surname_camarero FROM tbl_camarero");
