@@ -28,7 +28,7 @@
 </head>
 <body>
 
-
+<a href="salas.php"><button class="back">Volver a salas</button></a>
 <?php
 require_once "../Procesos/conection.php";
 session_start();
@@ -82,34 +82,58 @@ if (isset($_SESSION['sala'])) {
         // Mostrar mesas como botones
         echo "<h2>Mesas en: $nombre_sala</h2>";
         echo "<form action='./asignar_mesa.php' method='POST'>";
+        switch ($_SESSION["sala"]) {
+        case 'Terraza_1':
 
-        if ($_SESSION['sala'] === 'Terraza_1' || $_SESSION['sala'] === 'Terraza_2'){
             echo "<div class='terrazafoto'>";
-            echo '<img src="../CSS/img/Cesped.png" alt="" id="terrazafoto">';
+            echo '<img src="../CSS/img/Terraza1.png" alt="" id="terrazafoto">';
             echo "</div>";
-        }
-
-        if ($_SESSION['sala'] === 'Jardin'){
+            break;
+        case 'Terraza_2':
+            echo "<div class='terrazafoto'>";
+            echo '<img src="../CSS/img/Terraza2.png" alt="" id="terrazafoto">';
+            echo "</div>";
+            break;
+        case 'Jardin':
             echo "<div class='jardinfoto'>";
-            echo '<img src="../CSS/img/Cesped_largo.png" alt="" id="jardinfoto">';
+            echo '<img src="../CSS/img/jardin.png" alt="" id="jardinfoto">';
             echo "</div>";
-        }
-
-        if ($_SESSION['sala'] === 'Comedor_1' || $_SESSION['sala'] === 'Comedor_2'){
+            break;
+        case 'Comedor_1':
             echo "<div class='comedorfoto'>";
-            echo '<img src="../CSS/img/Madera.png" alt="" id="comedorfoto">';
+            echo '<img src="../CSS/img/comedor2.png" alt="" id="comedorfoto">';
             echo "</div>";
-        }
-
-        if ($_SESSION['sala'] === 'Salon_VIP' || $_SESSION['sala'] === 'Salon_VIP_2' || $_SESSION['sala'] === 'Salon_romántico' || $_SESSION['sala'] === 'Naturaleza'){
+            break;
+        case 'Comedor_2':
+            echo "<div class='comedorfoto'>";
+            echo '<img src="../CSS/img/comedor1.png" alt="" id="comedorfoto">';
+            echo "</div>";
+            break;
+        case 'Salon_VIP':
             echo "<div class='reservaofoto'>";
-            echo '<img src="../CSS/img/Racholas.png" alt="" id="reservaofoto">';
+            echo '<img src="../CSS/img/salon_vip.png" alt="" id="reservaofoto">';
             echo "</div>";
+            break;
+        case 'Salon_VIP_2':
+            echo "<div class='reservaofoto'>";
+            echo '<img src="../CSS/img/salon_vip_2.png" alt="" id="reservaofoto">';
+            echo "</div>";
+            break;
+        case 'Salon_romantico':
+            echo "<div class='reservaofoto'>";
+            echo '<img src="../CSS/img/romantica.png" alt="" id="reservaofoto">';
+            echo "</div>";
+            break;
+        case 'Naturaleza':
+            echo "<div class='reservaofoto'>";
+            echo '<img src="../CSS/img/naturaleza.png" alt="" id="reservaofoto">';
+            echo "</div>";
+            break;
+        default:
+            # code...
+            break;
         }
-
-
-
-
+        
         if ($resultado_mesas->num_rows > 0) {
             while ($mesa = $resultado_mesas->fetch_assoc()) {
                 $id_mesa = htmlspecialchars($mesa['id_mesa']);
@@ -143,7 +167,7 @@ if (isset($_SESSION['sala'])) {
 // Cerrar conexión
 $conn->close();
 ?>
-<a href="salas.php"><button class="back">Volver a salas</button></a>
+
 
 </body>
 </html>
