@@ -1,7 +1,7 @@
 <?php
 $server = "localhost";
 $user = "root";
-$pwd = "qweQWE123";
+$pwd = "";
 $db = "db_restaurante";
 
 try {
