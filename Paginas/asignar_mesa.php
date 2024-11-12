@@ -80,22 +80,22 @@
                 echo "<p><strong>Asignada por:</strong> " . htmlspecialchars($asignacion['name_camarero']) . " " . htmlspecialchars($asignacion['surname_camarero']) . "</p>";
                 echo "<p><strong>Asignada a:</strong> " . htmlspecialchars($asignacion['assigned_to']) . "</p>";
 
-                // Botón de desasignar
-                echo "<form method='POST' action=''>";
+                // Botón de desasignar con IDs correctos
+                echo "<form method='POST' action='' id='form-desasignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
-                echo "<button type='submit' name='desasignar' class='btn btn-rojo'>Desasignar</button>";
+                echo "<button type='button' id='btn-desasignar' class='btn btn-rojo'>Desasignar</button>";
                 echo "</form>";
             } else {
                 // Mensaje si la mesa no está asignada
                 echo "<a href='mesas.php'><button class='btn btn-secondary back'>Volver a mesas</button></a>";
                 echo "<p>Esta mesa no está asignada actualmente.</p>";
 
-                // Botón de asignar
-                echo "<form method='POST' action=''>";
+                // Botón de asignar con IDs correctos
+                echo "<form method='POST' action='' id='form-asignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
                 echo "<label for='assigned_to'>Asignar a: </label>";
                 echo "<input type='text' id='assigned_to' name='assigned_to' class='form-control mb-2'>";
-                echo "<button type='submit' name='asignar' class='btn btn-verde'>Asignar</button>";
+                echo "<button type='button' id='btn-asignar' class='btn btn-verde'>Asignar</button>";
                 echo "</form>";
             }
 
