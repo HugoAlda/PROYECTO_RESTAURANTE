@@ -23,20 +23,34 @@
 
         $id_user = $_SESSION["camareroID"]; // ID del camarero actual
 
-
         if (isset($_POST['mesa'])) {
             $id_mesa = $_POST['mesa'];
 
-            if (isset($_POST['asignar'])) {
-                $assigned_to = trim($_POST['assigned_to']);  // Limpiar espacios en blanco 
+            // Verificar si se ha solicitado desasignar la mesa
+            if (isset($_POST['desasignar'])) {
+                // Actualizar el registro en tbl_historial para desasignar la mesa
+                $stmt_update = $conn->prepare("UPDATE tbl_historial SET fecha_NA = NOW() WHERE id_mesa = ? AND fecha_NA IS NULL");
+                $stmt_update->bind_param("i", $id_mesa);
+                $stmt_update->execute();
 
-                // No vacío
+                if ($stmt_update->affected_rows > 0) {
+                    echo "<p class='text-success'>Mesa $id_mesa desasignada exitosamente.</p>";
+                } else {
+                    echo "<p class='text-danger'>Error al desasignar la mesa. Intenta de nuevo.</p>";
+                }
+
+                $stmt_update->close();
+            }
+
+            // Verificar si se ha solicitado asignar la mesa
+            if (isset($_POST['asignar'])) {
+                $assigned_to = trim($_POST['assigned_to']);  // Limpiar espacios en blanco
+
+                // Validación no vacío
                 if (empty($assigned_to)) {
                     echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
                 } else {
-                    $assigned_to = htmlspecialchars($assigned_to);
-
-                    // Realizar la inserción en la base de datos
+                    // Asignar la mesa si 'assigned_to' tiene un valor válido
                     $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
                     $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
                     $stmt_insert->execute();
