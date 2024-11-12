@@ -7,8 +7,8 @@ form {
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 60%; /* Ajuste de ancho para mejor visibilidad */
-    height: 240px;
+    width: 40%; /* Ajuste de ancho para mejor visibilidad */
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(186, 147, 147, 0.2);
 }
