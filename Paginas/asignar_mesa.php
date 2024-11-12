@@ -23,39 +23,33 @@
 
         $id_user = $_SESSION["camareroID"]; // ID del camarero actual
 
+
         if (isset($_POST['mesa'])) {
             $id_mesa = $_POST['mesa'];
 
-            // Verificar si se ha solicitado desasignar la mesa
-            if (isset($_POST['desasignar'])) {
-                // Actualizar el registro en tbl_historial para desasignar la mesa
-                $stmt_update = $conn->prepare("UPDATE tbl_historial SET fecha_NA = NOW() WHERE id_mesa = ? AND fecha_NA IS NULL");
-                $stmt_update->bind_param("i", $id_mesa);
-                $stmt_update->execute();
-
-                if ($stmt_update->affected_rows > 0) {
-                    echo "<p class='text-success'>Mesa $id_mesa desasignada exitosamente.</p>";
-                } else {
-                    echo "<p class='text-danger'>Error al desasignar la mesa. Intenta de nuevo.</p>";
-                }
-
-                $stmt_update->close();
-            }
-
-            // Verificar si se ha solicitado asignar la mesa
             if (isset($_POST['asignar'])) {
-                $assigned_to = $_POST['assigned_to'];
-                $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
-                $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
-                $stmt_insert->execute();
+                $assigned_to = trim($_POST['assigned_to']);  // Limpiar espacios en blanco 
 
-                if ($stmt_insert->affected_rows > 0) {
-                    echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
+                // No vacío
+                if (empty($assigned_to)) {
+                    echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
                 } else {
-                    echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
-                }
+                    // Escapar los datos para evitar vulnerabilidades de seguridad
+                    $assigned_to = htmlspecialchars($assigned_to, ENT_QUOTES, 'UTF-8');
 
-                $stmt_insert->close();
+                    // Realizar la inserción en la base de datos
+                    $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
+                    $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
+                    $stmt_insert->execute();
+
+                    if ($stmt_insert->affected_rows > 0) {
+                        echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
+                    } else {
+                        echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
+                    }
+
+                    $stmt_insert->close();
+                }
             }
 
             // Consulta para verificar si la mesa está asignada actualmente
@@ -115,8 +109,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Archivo de JavaScript con las alertas -->
-<script src="../JS/alert.js"></script>

@@ -32,7 +32,7 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
 <form method="post" action="historial.php">
     <label for="room">Seleccione una Sala:</label>
     <select name="room" id="room" onchange="this.form.submit()">
-        <option value="" disabled>Seleccione una Sala</option>
+        <option value="">Todo</option>
         <?php
         // Query to fetch rooms
         $stmt_rooms = $conn->prepare("SELECT id_salas, name_sala FROM tbl_salas");
@@ -112,66 +112,95 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
     </form>
 
     <h3>Historial de Mesa <?php echo $selectedTable; ?></h3>
-    <?php
-    // Consulta SQL base
-    $sql = "
-        SELECT h.fecha_A, h.fecha_NA, c.name_camarero, c.surname_camarero, h.assigned_to
-        FROM tbl_historial h
-        JOIN tbl_camarero c ON h.assigned_by = c.id_camarero
-        WHERE h.id_mesa = ?
-    ";
+<?php else: ?>
+    <h3>Historial Completo de Mesas</h3>
+<?php endif; ?>
 
-    // Variables para el almacenamiento de parámetros
-    $parametros = [$selectedTable];
-    $tipos = "i";
+<?php
+// Consulta SQL base para mostrar el historial completo si no se selecciona mesa ni sala
+$sql = "
+    SELECT h.fecha_A, h.fecha_NA, c.name_camarero, c.surname_camarero, h.assigned_to, m.id_mesa, m.n_asientos, s.name_sala
+    FROM tbl_historial h
+    JOIN tbl_camarero c ON h.assigned_by = c.id_camarero
+    JOIN tbl_mesas m ON h.id_mesa = m.id_mesa
+    JOIN tbl_salas s ON m.id_sala = s.id_salas
+";
 
-    // Aplicar filtros si están configurados
-    if ($filterDate) {
-        $sql .= " AND DATE(h.fecha_A) = ?";
-        $parametros[] = $filterDate;
-        $tipos .= "s"; // Tipo de dato string para la fecha
-    }
+// Variables para los parámetros de la consulta
+$parametros = [];
+$tipos = "";
 
-    if ($filterCamarero) {
-        $sql .= " AND h.assigned_by = ?";
-        $parametros[] = $filterCamarero;
-        $tipos .= "i"; // Tipo de dato entero para el id del camarero
-    }
+// Si hay filtro de fecha
+if ($filterDate) {
+    $sql .= " AND DATE(h.fecha_A) = ?";
+    $parametros[] = $filterDate;
+    $tipos .= "s";
+}
 
-    $sql .= " ORDER BY h.fecha_A DESC";
+// Si hay filtro de camarero
+if ($filterCamarero) {
+    $sql .= " AND h.assigned_by = ?";
+    $parametros[] = $filterCamarero;
+    $tipos .= "i";
+}
 
+// Si se seleccionó una sala
+if ($SalaSeleccionada) {
+    $sql .= " AND m.id_sala = ?";
+    $parametros[] = $SalaSeleccionada;
+    $tipos .= "i";
+}
+
+// Si se seleccionó una mesa
+if ($selectedTable) {
+    $sql .= " AND h.id_mesa = ?";
+    $parametros[] = $selectedTable;
+    $tipos .= "i";
+}
+
+// Si se tienen parámetros, se vinculan
+if (!empty($tipos)) {
     // Preparar y ejecutar la consulta
     $stmt_history = $conn->prepare($sql);
 
-    // Vincular dinámicamente los parámetros
+    // Vincular los parámetros dinámicamente
     $stmt_history->bind_param($tipos, ...$parametros);
-    $stmt_history->execute();
-    $result_history = $stmt_history->get_result();
+} else {
+    // Si no hay parámetros, simplemente ejecutamos la consulta sin bind_param
+    $stmt_history = $conn->prepare($sql);
+}
 
-    if ($result_history->num_rows > 0) {
-        echo "<table border='1'>
-                <tr>
-                    <th>Fecha Asignación</th>
-                    <th>Fecha No Asignación</th>
-                    <th>Asignado Por</th>
-                    <th>Asignado A</th>
-                </tr>";
-        while ($row = $result_history->fetch_assoc()) {
-            echo "<tr>
-                    <td>" . $row['fecha_A'] . "</td>
-                    <td>" . ($row['fecha_NA'] ? $row['fecha_NA'] : "N/A") . "</td>
-                    <td>" . $row['name_camarero'] . " " . $row['surname_camarero'] . "</td>
-                    <td>" . $row['assigned_to'] . "</td>
-                  </tr>";
-        }
-        echo "</table>";
-    } else {
-        echo "<p>No hay historial para esta mesa.</p>";
+// Ejecutar la consulta
+$stmt_history->execute();
+$result_history = $stmt_history->get_result();
+
+if ($result_history->num_rows > 0) {
+    echo "<table border='1'>
+            <tr>
+                <th>Fecha Asignación</th>
+                <th>Fecha No Asignación</th>
+                <th>Asignado Por</th>
+                <th>Asignado A</th>
+                <th>Mesa</th>
+                <th>Sala</th>
+            </tr>";
+    while ($row = $result_history->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row['fecha_A'] . "</td>
+                <td>" . ($row['fecha_NA'] ? $row['fecha_NA'] : "N/A") . "</td>
+                <td>" . $row['name_camarero'] . " " . $row['surname_camarero'] . "</td>
+                <td>" . $row['assigned_to'] . "</td>
+                <td>Mesa " . $row['id_mesa'] . " (" . $row['n_asientos'] . " asientos)</td>
+                <td>" . $row['name_sala'] . "</td>
+              </tr>";
     }
+    echo "</table>";
+} else {
+    echo "<p>No hay historial disponible.</p>";
+}
 
-    $stmt_history->close();
-    ?>
-<?php endif; ?>
+$stmt_history->close();
+?>
 
 </body>
 </html>
