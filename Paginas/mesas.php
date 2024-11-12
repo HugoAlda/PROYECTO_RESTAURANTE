@@ -101,12 +101,12 @@ if (isset($_SESSION['sala'])) {
             break;
         case 'Comedor_1':
             echo "<div class='comedorfoto'>";
-            echo '<img src="../CSS/img/comedor2.png" alt="" id="comedorfoto">';
+            echo '<img src="../CSS/img/comedor1.png" alt="" id="comedorfoto">';
             echo "</div>";
             break;
         case 'Comedor_2':
             echo "<div class='comedorfoto'>";
-            echo '<img src="../CSS/img/comedor1.png" alt="" id="comedorfoto">';
+            echo '<img src="../CSS/img/comedor2.png" alt="" id="comedorfoto">';
             echo "</div>";
             break;
         case 'Salon_VIP':
