@@ -43,7 +43,7 @@
             }
 
             // Verificar si se ha solicitado asignar la mesa
-            if (isset($_POST['assigned_to'])) {
+            if (isset($_POST['assigned_to']) && $_POST['assigned_to'] !== '') {
                 $assigned_to = $_POST['assigned_to'];
                 $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
                 $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
@@ -55,6 +55,8 @@
                     echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
                 }
                 $stmt_insert->close();
+            } elseif (isset($_POST['assigned_to']) && $_POST['assigned_to'] === '') {
+                echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
             }
 
             // Consulta para verificar si la mesa está asignada actualmente
@@ -90,7 +92,7 @@
                 echo "<a href='mesas.php'><button class='btn btn-secondary back'>Volver a mesas</button></a>";
                 echo "<p>Esta mesa no está asignada actualmente.</p>";
 
-                // Botón de asignar con IDs correctos
+                // Formulario para asignar la mesa
                 echo "<form method='POST' action='' id='form-asignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
                 echo "<label for='assigned_to'>Asignar a: </label>";
@@ -109,7 +111,7 @@
         $conn->close();
         ?>
     </div>
-    <!-- Bootstrap JS and dependencies -->
+    <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
