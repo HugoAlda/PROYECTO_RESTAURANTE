@@ -34,8 +34,7 @@
                 if (empty($assigned_to)) {
                     echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
                 } else {
-                    // Escapar los datos para evitar vulnerabilidades de seguridad
-                    $assigned_to = htmlspecialchars($assigned_to, ENT_QUOTES, 'UTF-8');
+                    $assigned_to = htmlspecialchars($assigned_to);
 
                     // Realizar la inserción en la base de datos
                     $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
