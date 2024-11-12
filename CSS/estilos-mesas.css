@@ -1,47 +1,181 @@
+
+#btn_1{
+    
+}
+#btn_2{
+    
+}
+#btn_3{
+    
+}
+#btn_4{
+    
+}
+#btn_5{
+    
+}
+#btn_6{
+    
+}
+
+#btn_7{
+    
+}
+
+#btn_8{
+    
+}
+
+#btn_9{
+    
+}
+
+#btn_10{
+    
+}
+
+#btn_11{
+    
+}
+
+#btn_12{
+    position: absolute;
+    top: 22%;
+    left: 32.5%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
+}
+
+#btn_13{
+    
+}
+
+#btn_14{
+    
+}
+
+#btn_15{
+    
+}
+
+#btn_16{
+    
+}
+
+#btn_17{
+    
+}
+
+#btn_18{
+    
+}
+
+#btn_19{
+    
+}
+
+#btn_20{
+    
+}
+
+#btn_21{
+    
+}
+
+#btn_22{
+    
+}
+
+#btn_23{
+    
+}
+
+#btn_24{
+    
+}
+
+#btn_25{
+    
+}
+
+#btn_26{
+    
+}
+
+#btn_27{
+    
+}
+
+#btn_28{
+    
+} 
+
+
+.contenedor {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 form {
     display: flex;
     align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
+
 .terrazafoto {
     display: flex;
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 40%; /* Ajuste de ancho para mejor visibilidad */
+    width: 40%; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(186, 147, 147, 0.2);
 }
+
 .jardinfoto {
     display: flex;
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 80%; /* Ajuste de ancho para mejor visibilidad */
+    width: 80%; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .reservaofoto {
     display: flex;
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 30%; /* Ajuste de ancho para mejor visibilidad */
+    width: 30%; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .comedorfoto {
     display: flex;
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 20%; /* Ajuste de ancho para mejor visibilidad */
+    width: 20%; 
     height: 10%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 /* Imagen de fondo centrada */
 .terrazafoto img,
 .jardinfoto img,
@@ -68,21 +202,34 @@ form button {
 
 /* Clases para los botones de mesas según el estado */
 .btn-verde {
-    background-color: #28a745;
+    background-color: #28a746dc;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
 .btn-verde:hover {
-    background-color: #218838;
+    background-color: #28a746cb;
     transform: scale(1.05);
 }
 
 .btn-rojo {
-    background-color: #dc3545;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
 .btn-rojo:hover {
     background-color: #c82333;
     transform: scale(1.05);
 }
-
 
 /* Estilo para el título */
 h2 {
