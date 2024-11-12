@@ -250,13 +250,17 @@ h1 {
 /* Asegura que el botón esté por encima de la imagen de fondo */
 .logout {
     position: relative;
+    width: 140px;
     z-index: 30; /* Asegura que el botón esté por encima de otros elementos */
+    margin-left: 6px;
+    margin-top: 15px;
 }
 
 /* Estilos del botón "Historial" */
 .back {
     padding: 10px 20px;
-    margin-left: 5px;
+    margin-left: 6px;
+    margin-top: 15px;
     font-size: 16px;
     color: white;
     background-color: #6c757d;
