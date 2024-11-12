@@ -33,7 +33,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_10{
@@ -43,7 +43,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_11{
@@ -53,7 +53,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_12{
@@ -63,7 +63,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_13{
@@ -73,7 +73,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_14{
@@ -83,7 +83,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_15{
@@ -93,7 +93,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_16{
@@ -103,7 +103,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_17{
@@ -113,7 +113,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_18{
@@ -123,7 +123,7 @@
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_19{
@@ -133,7 +133,7 @@
     width: 4.5%;
     height: 10%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_20{
@@ -143,7 +143,7 @@
     width: 4.5%;
     height: 10%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent ;
 }
 
 #btn_21{
@@ -153,37 +153,80 @@
     width: 3.6%;
     height: 6.6%;
     z-index: 1;
-    color: transparent !important;
+    color: transparent;
 }
 
 #btn_22{
-    
+    position: absolute;
+    top: 16%;
+    left: 47.8%;
+    width: 5.8%;
+    height: 32%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 30% 30% 30% 30%;
 }
 
 #btn_23{
-    
+    position: absolute;
+    top: 59.9%;
+    left: 46.4%;
+    width: 4.4%;
+    height: 9.8%;
+    z-index: 1;
+    color: transparent ;
 }
 
 #btn_24{
-    
+    position: absolute;
+    top: 38.8%;
+    left: 19.3%;
+    width: 5.3%;
+    height: 12%;
+    z-index: 1;
+    color: transparent;
 }
 
 #btn_25{
-    
+    position: absolute;
+    top: 44%;
+    left: 32.4%;
+    width: 3.5%;
+    height: 10.5%;
+    z-index: 1;
+    color: transparent;
 }
 
 #btn_26{
-    
+    position: absolute;
+    top: 41.5%;
+    left: 40.1%;
+    width: 17.5%;
+    height: 16.3%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 30% 30% 30% 30%;
 }
 
 #btn_27{
-    
+    position: absolute;
+    top: 44.2%;
+    left: 62.5%;
+    width: 3.5%;
+    height: 10.5%;
+    z-index: 1;
+    color: transparent;
 }
 
 #btn_28{
-    
-} 
-
+    position: absolute;
+    top: 38.8%;
+    left: 74.3%;
+    width: 5.3%;
+    height: 12%;
+    z-index: 1;
+    color: transparent;
+}
 
 .contenedor {
     position: relative;

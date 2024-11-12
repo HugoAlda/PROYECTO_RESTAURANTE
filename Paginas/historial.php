@@ -177,21 +177,21 @@ $result_history = $stmt_history->get_result();
 if ($result_history->num_rows > 0) {
     echo "<table border='1'>
             <tr>
-                <th>Fecha Asignación</th>
-                <th>Fecha No Asignación</th>
-                <th>Asignado Por</th>
-                <th>Asignado A</th>
-                <th>Mesa</th>
                 <th>Sala</th>
+                <th>Mesa</th>
+                <th>Camarero</th>
+                <th>Fecha ocupación</th>
+                <th>Cliente asignado</th>
+                <th>Fecha desocupación</th>
             </tr>";
     while ($row = $result_history->fetch_assoc()) {
         echo "<tr>
-                <td>" . $row['fecha_A'] . "</td>
-                <td>" . ($row['fecha_NA'] ? $row['fecha_NA'] : "N/A") . "</td>
-                <td>" . $row['name_camarero'] . " " . $row['surname_camarero'] . "</td>
-                <td>" . $row['assigned_to'] . "</td>
-                <td>Mesa " . $row['id_mesa'] . " (" . $row['n_asientos'] . " asientos)</td>
                 <td>" . $row['name_sala'] . "</td>
+                <td>Mesa " . $row['id_mesa'] . " (" . $row['n_asientos'] . " asientos)</td>
+                <td>" . $row['name_camarero'] . " " . $row['surname_camarero'] . "</td>
+                <td>" . $row['fecha_A'] . "</td>
+                <td>" . $row['assigned_to'] . "</td>
+                <td>" . ($row['fecha_NA'] ? $row['fecha_NA'] : "N/A") . "</td>
               </tr>";
     }
     echo "</table>";
