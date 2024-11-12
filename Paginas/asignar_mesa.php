@@ -69,9 +69,9 @@ if (isset($_POST['mesa'])) {
         echo "<p><strong>Asignada a:</strong> " . htmlspecialchars($asignacion['assigned_to']) . "</p>";
         
         // Botón de desasignar
-        echo "<form method='POST' action=''>";
+        echo "<form method='POST' action='' id='form-desasignar'>";
         echo "<input type='hidden' name='mesa' value='$id_mesa'>";
-        echo "<button type='submit' name='desasignar' class='btn-rojo'>Desasignar</button>";
+        echo "<button type='submit' name='desasignar' class='btn-rojo' id='btn-desasignar'>Desasignar</button>";
         echo "</form>";
     } else {
         // Mensaje si la mesa no está asignada
@@ -79,11 +79,11 @@ if (isset($_POST['mesa'])) {
         echo "<p>Esta mesa no está asignada actualmente.</p>";
         
         // Botón de asignar
-        echo "<form method='POST' action=''>";
+        echo "<form method='POST' action='' id='form-asignar'>";
         echo "<input type='hidden' name='mesa' value='$id_mesa'>";
         echo "<label for='assigned_to'>Asignar a: </label>";
         echo "<input type='text' id='assigned_to' name='assigned_to'>";
-        echo "<button type='submit' name='asignar' class='btn-verde'>Asignar</button>";
+        echo "<button type='submit' name='asignar' class='btn-verde' id='btn-asignar'>Asignar</button>";
         echo "</form>";
     }
 
@@ -96,3 +96,8 @@ if (isset($_POST['mesa'])) {
 // Cerrar conexión
 $conn->close();
 ?>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Archivo de JavaScript con las alertas -->
+<script src="../JS/alert.js"></script>
