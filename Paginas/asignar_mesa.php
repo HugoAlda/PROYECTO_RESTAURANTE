@@ -28,7 +28,6 @@
 
             // Verificar si se ha solicitado desasignar la mesa
             if (isset($_POST['desasignar'])) {
-                // Actualizar el registro en tbl_historial para desasignar la mesa
                 $stmt_update = $conn->prepare("UPDATE tbl_historial SET fecha_NA = NOW() WHERE id_mesa = ? AND fecha_NA IS NULL");
                 $stmt_update->bind_param("i", $id_mesa);
                 $stmt_update->execute();
@@ -42,21 +41,27 @@
                 $stmt_update->close();
             }
 
-            // Verificar si se ha solicitado asignar la mesa
+            // Verificar si se ha solicitado asignar la mesa y validar el campo 'assigned_to'
             if (isset($_POST['assigned_to']) && $_POST['assigned_to'] !== '') {
                 $assigned_to = $_POST['assigned_to'];
-                $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
-                $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
-                $stmt_insert->execute();
 
-                if ($stmt_insert->affected_rows > 0) {
-                    echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
+                // Validación de al menos 3 caracteres y solo letras
+                if (preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ]{3,}$/", $assigned_to)) {
+                    $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
+                    $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
+                    $stmt_insert->execute();
+
+                    if ($stmt_insert->affected_rows > 0) {
+                        echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
+                    } else {
+                        echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
+                    }
+                    $stmt_insert->close();
                 } else {
-                    echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
+                    echo "<p class='text-danger'>No me vale</p>";
                 }
-                $stmt_insert->close();
             } elseif (isset($_POST['assigned_to']) && $_POST['assigned_to'] === '') {
-                echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
+                    echo "<p class='text-danger'>No pusiste nada</p>";
             }
 
             // Consulta para verificar si la mesa está asignada actualmente
@@ -88,11 +93,9 @@
                 echo "<button type='submit' id='btn-desasignar' class='btn btn-rojo'>Desasignar</button>";
                 echo "</form>";
             } else {
-                // Mensaje si la mesa no está asignada
                 echo "<a href='mesas.php'><button class='btn btn-secondary back'>Volver a mesas</button></a>";
                 echo "<p>Esta mesa no está asignada actualmente.</p>";
 
-                // Formulario para asignar la mesa
                 echo "<form method='POST' action='' id='form-asignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
                 echo "<label for='assigned_to'>Asignar a: </label>";
@@ -101,13 +104,11 @@
                 echo "</form>";
             }
 
-            // Liberar recursos
             $stmt->close();
         } else {
             echo "<p>No se ha seleccionado ninguna mesa.</p>";
         }
 
-        // Cerrar conexión
         $conn->close();
         ?>
     </div>

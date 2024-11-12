@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "Inicio de sesión exitoso",
+            title: "Inicio de sesión exitoso.",
             showConfirmButton: false,
             timer: 2000
         });
