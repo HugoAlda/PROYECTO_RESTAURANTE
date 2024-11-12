@@ -13,6 +13,26 @@ h2 {
     margin-bottom: 20px;
 }
 
+.historial{
+    overflow-y: auto;
+    max-height: 480px;
+}
+
+/* Ajusta el encabezado para que sea sticky */
+th {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 2; /* Asegúrate de que esté por encima del contenido */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: left;
+}
+
+tr:hover{
+    background-color: #e4e4e4;
+}
+
 /* Form Styling */
 form {
     margin-bottom: 20px;
@@ -48,10 +68,6 @@ table, th, td {
 th {
     background-color: #f0f0f0;
     font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
 }
 
 /* Message Styling */
