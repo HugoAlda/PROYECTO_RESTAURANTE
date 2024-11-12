@@ -27,21 +27,39 @@
 }
 
 #btn_9{
-    
+    position: absolute;
+    top: 22%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_10{
-    
+    position: absolute;
+    top: 43.7%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_11{
-    
+    position: absolute;
+    top: 63.8%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_12{
     position: absolute;
     top: 22%;
-    left: 32.5%;
+    left: 45.4%;
     width: 7.3%;
     height: 12.5%;
     z-index: 1;
@@ -49,27 +67,63 @@
 }
 
 #btn_13{
-    
+    position: absolute;
+    top: 43.7%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_14{
-    
+    position: absolute;
+    top: 63.8%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_15{
-    
+    position: absolute;
+    top: 22%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_16{
-    
+    position: absolute;
+    top: 43.7%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_17{
-    
+    position: absolute;
+    top: 63.8%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_18{
-    
+    position: absolute;
+    top: 42.8%;
+    left: 45.4%;
+    width: 7.3%;
+    height: 12.5%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_19{
@@ -122,6 +176,14 @@
     align-items: center;
 }
 
+.contenedor>h2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
 form {
     display: flex;
     align-items: center;
@@ -137,7 +199,7 @@ form {
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 40%; 
+    width: 15%; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(186, 147, 147, 0.2);
@@ -212,12 +274,11 @@ form button {
 }
 
 .btn-verde:hover {
-    background-color: #28a746cb;
     transform: scale(1.05);
 }
 
 .btn-rojo {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.618);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -227,7 +288,6 @@ form button {
 }
 
 .btn-rojo:hover {
-    background-color: #c82333;
     transform: scale(1.05);
 }
 

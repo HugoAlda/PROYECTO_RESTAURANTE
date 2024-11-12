@@ -125,7 +125,7 @@ if (isset($_SESSION['sala'])) {
                 $boton_clase = ($estado_mesa === 'Asignada') ? 'btn-rojo' : 'btn-verde';
                 
                 // Botón para cada mesa
-                echo "<button type='submit' name='mesa' value='$id_mesa' class='$boton_clase'>Mesa $id_mesa (Asientos: $n_asientos)</button>";
+                echo "<button type='submit' id='btn_$id_mesa' name='mesa' value='$id_mesa' class='$boton_clase'>Mesa $id_mesa (Asientos: $n_asientos)</button>";
             }
         } else {
             echo "<p>No hay mesas disponibles en esta sala.</p>";
