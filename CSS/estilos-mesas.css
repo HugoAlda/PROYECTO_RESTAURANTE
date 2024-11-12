@@ -1,29 +1,90 @@
-/* #btn_1{
-    
+#btn_1{
+    position: absolute;
+    top: 22.5%;
+    left: 45.4%;
+    width: 8.8%;
+    height: 8.8%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 30% 30% 30% 30%;
 }
+
 #btn_2{
-    
+    position: absolute;
+    top: 46.5%;
+    left: 50.35%;
+    width: 3%;
+    height: 7%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 50%;
 }
+
 #btn_3{
-    
+    position: absolute;
+    top: 46.5%;
+    left: 43.2%;
+    width: 3%;
+    height: 7%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 50%;
 }
+
 #btn_4{
-    
+    position: absolute;
+    top: 67.5%;
+    left: 45.5%;
+    width: 8.8%;
+    height: 8.8%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 30% 30% 30% 30%;
 }
+
 #btn_5{
-    
+    position: absolute;
+    top: 22.2%;
+    left: 45%;
+    width: 8.8%;
+    height: 8.8%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 30% 30% 30% 30%;
 }
+
 #btn_6{
-    
+    position: absolute;
+    top: 44.9%;
+    left: 46%;
+    width: 3%;
+    height: 7%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 50%;
 }
 
 #btn_7{
-    
+    position: absolute;
+    top: 45%;
+    left: 53.2%;
+    width: 3%;
+    height: 7%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 50%;
 }
 
 #btn_8{
-    
-} */
+    position: absolute;
+    top: 67.1%;
+    left: 45.1%;
+    width: 8.8%;
+    height: 8.8%;
+    z-index: 1;
+    color: transparent;
+    border-radius: 30% 30% 30% 30%;
+}
 
 #btn_9{
     position: absolute;
@@ -293,7 +354,7 @@ form {
     position: relative;
     margin: 0 auto;
     width: 20%; 
-    height: 10%;
+    height: 70%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
