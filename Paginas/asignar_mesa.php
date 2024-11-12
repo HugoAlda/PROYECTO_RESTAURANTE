@@ -43,26 +43,20 @@
             }
 
             // Verificar si se ha solicitado asignar la mesa
-            if (isset($_POST['asignar'])) {
-                $assigned_to = trim($_POST['assigned_to']);  // Limpiar espacios en blanco
+            if (isset($_POST['assigned_to']) && $_POST['assigned_to'] !== '') {
+                $assigned_to = $_POST['assigned_to'];
+                $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
+                $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
+                $stmt_insert->execute();
 
-                // Validación no vacío
-                if (empty($assigned_to)) {
-                    echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
+                if ($stmt_insert->affected_rows > 0) {
+                    echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
                 } else {
-                    // Asignar la mesa si 'assigned_to' tiene un valor válido
-                    $stmt_insert = $conn->prepare("INSERT INTO tbl_historial (fecha_A, assigned_by, assigned_to, id_mesa) VALUES (NOW(), ?, ?, ?)");
-                    $stmt_insert->bind_param("isi", $id_user, $assigned_to, $id_mesa);
-                    $stmt_insert->execute();
-
-                    if ($stmt_insert->affected_rows > 0) {
-                        echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
-                    } else {
-                        echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
-                    }
-
-                    $stmt_insert->close();
+                    echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
                 }
+                $stmt_insert->close();
+            } elseif (isset($_POST['assigned_to']) && $_POST['assigned_to'] === '') {
+                echo "<p class='text-danger'>No se puede asignar a un fantasma</p>";
             }
 
             // Consulta para verificar si la mesa está asignada actualmente
@@ -87,22 +81,23 @@
                 echo "<p><strong>Asignada por:</strong> " . htmlspecialchars($asignacion['name_camarero']) . " " . htmlspecialchars($asignacion['surname_camarero']) . "</p>";
                 echo "<p><strong>Asignada a:</strong> " . htmlspecialchars($asignacion['assigned_to']) . "</p>";
 
-                // Botón de desasignar
-                echo "<form method='POST' action=''>";
+                // Botón de desasignar con IDs correctos
+                echo "<form method='POST' action='' id='form-desasignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
-                echo "<button type='submit' name='desasignar' class='btn btn-rojo'>Desasignar</button>";
+                echo "<input type='hidden' name='desasignar' value='true'>";
+                echo "<button type='submit' id='btn-desasignar' class='btn btn-rojo'>Desasignar</button>";
                 echo "</form>";
             } else {
                 // Mensaje si la mesa no está asignada
                 echo "<a href='mesas.php'><button class='btn btn-secondary back'>Volver a mesas</button></a>";
                 echo "<p>Esta mesa no está asignada actualmente.</p>";
 
-                // Botón de asignar
-                echo "<form method='POST' action=''>";
+                // Formulario para asignar la mesa
+                echo "<form method='POST' action='' id='form-asignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
                 echo "<label for='assigned_to'>Asignar a: </label>";
                 echo "<input type='text' id='assigned_to' name='assigned_to' class='form-control mb-2'>";
-                echo "<button type='submit' name='asignar' class='btn btn-verde'>Asignar</button>";
+                echo "<button type='submit' id='btn-asignar' class='btn btn-verde'>Asignar</button>";
                 echo "</form>";
             }
 
@@ -116,9 +111,14 @@
         $conn->close();
         ?>
     </div>
-    <!-- Bootstrap JS and dependencies -->
+    <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Archivo de JavaScript con las alertas -->
+<script src="../JS/alert.js"></script>
