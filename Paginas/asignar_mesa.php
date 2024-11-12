@@ -50,12 +50,10 @@
                 $stmt_insert->execute();
 
                 if ($stmt_insert->affected_rows > 0) {
-                    echo $assigned_to;
                     echo "<p class='text-success'>Mesa $id_mesa asignada exitosamente a $assigned_to.</p>";
                 } else {
                     echo "<p class='text-danger'>Error al asignar la mesa. Intenta de nuevo.</p>";
                 }
-                exit();
                 $stmt_insert->close();
             }
 
@@ -84,7 +82,8 @@
                 // Botón de desasignar con IDs correctos
                 echo "<form method='POST' action='' id='form-desasignar'>";
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
-                echo "<button type='button' id='btn-desasignar' class='btn btn-rojo'>Desasignar</button>";
+                echo "<input type='hidden' name='desasignar' value='true'>";
+                echo "<button type='submit' id='btn-desasignar' class='btn btn-rojo'>Desasignar</button>";
                 echo "</form>";
             } else {
                 // Mensaje si la mesa no está asignada
@@ -96,7 +95,7 @@
                 echo "<input type='hidden' name='mesa' value='$id_mesa'>";
                 echo "<label for='assigned_to'>Asignar a: </label>";
                 echo "<input type='text' id='assigned_to' name='assigned_to' class='form-control mb-2'>";
-                echo "<button type='button' id='btn-asignar' class='btn btn-verde'>Asignar</button>";
+                echo "<button type='submit' id='btn-asignar' class='btn btn-verde'>Asignar</button>";
                 echo "</form>";
             }
 
