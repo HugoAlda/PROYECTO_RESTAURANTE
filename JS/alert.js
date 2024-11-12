@@ -1,11 +1,12 @@
+// Sweet Alert para confirmación de asignación o desasignación de mesa
 document.addEventListener('DOMContentLoaded', () => {
+    // Detectar clic en el botón "Asignar"
     const btnAsignar = document.getElementById('btn-asignar');
     const formAsignar = document.getElementById('form-asignar');
 
-    if (btnAsignar && formAsignar) {
-        
+    if (btnAsignar) {
         btnAsignar.addEventListener('click', (event) => {
-            event.preventDefault();
+            event.preventDefault(); // Evitar el envío del formulario inmediato
 
             Swal.fire({
                 title: '¿Seguro que quieres asignar esta mesa?',
@@ -17,18 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    formAsignar.submit();
+                    formAsignar.submit(); // Enviar el formulario si se confirma
                 }
             });
         });
     }
 
+    // Detectar clic en el botón "Desasignar"
     const btnDesasignar = document.getElementById('btn-desasignar');
     const formDesasignar = document.getElementById('form-desasignar');
 
-    if (btnDesasignar && formDesasignar) {
+    if (btnDesasignar) {
         btnDesasignar.addEventListener('click', (event) => {
-            event.preventDefault();
+            event.preventDefault(); // Evitar el envío del formulario inmediato
 
             Swal.fire({
                 title: '¿Seguro que quieres desasignar esta mesa?',
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    formDesasignar.submit();
+                    formDesasignar.submit(); // Enviar el formulario si se confirma
                 }
             });
         });

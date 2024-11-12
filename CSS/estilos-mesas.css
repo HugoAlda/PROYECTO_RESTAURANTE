@@ -1,11 +1,14 @@
-
+form {
+    display: flex;
+    align-items: center;
+}
 .terrazafoto {
     display: flex;
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 60%; /* Ajuste de ancho para mejor visibilidad */
-    height: 240px;
+    width: 40%; /* Ajuste de ancho para mejor visibilidad */
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(186, 147, 147, 0.2);
 }
@@ -24,7 +27,7 @@
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 40%; /* Ajuste de ancho para mejor visibilidad */
+    width: 30%; /* Ajuste de ancho para mejor visibilidad */
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -34,8 +37,8 @@
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 80%; /* Ajuste de ancho para mejor visibilidad */
-    height: auto;
+    width: 20%; /* Ajuste de ancho para mejor visibilidad */
+    height: 10%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -45,16 +48,17 @@
 .comedorfoto img,
 .reservaofoto img {
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 10px;
 }
 
 /* Estilos para los botones de las mesas */
-button {
+form button {
     padding: 10px 20px;
     margin: 10px;
     border: none;
     border-radius: 5px;
+    height: 150px;
     font-size: 16px;
     color: white;
     cursor: pointer;
@@ -93,6 +97,8 @@ h2 {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    position: absolute;
+    
 }
 
 /* Estilos del botón "Volver a salas" */
