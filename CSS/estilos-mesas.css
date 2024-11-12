@@ -127,15 +127,33 @@
 }
 
 #btn_19{
-    
+    position: absolute;
+    top: 23.7%;
+    left: 47.5%;
+    width: 4.5%;
+    height: 10%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_20{
-    
+    position: absolute;
+    top: 49.3%;
+    left: 47.5%;
+    width: 4.5%;
+    height: 10%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_21{
-    
+    position: absolute;
+    top: 71.5%;
+    left: 48%;
+    width: 3.6%;
+    height: 6.6%;
+    z-index: 1;
+    color: transparent !important;
 }
 
 #btn_22{
