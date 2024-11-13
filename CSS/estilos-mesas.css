@@ -1,5 +1,9 @@
 /* Hoja de estilos para las mesas */
 
+body{
+    background-color: rgb(220, 213, 194);
+}
+
 #btn_1{
     position: absolute;
     top: 22.5%;
