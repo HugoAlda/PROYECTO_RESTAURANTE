@@ -58,6 +58,7 @@ VALUES
 
 -- Inserciones en la tabla tbl_mesas
 INSERT INTO tbl_mesas (n_asientos, id_sala) VALUES
+
 -- Comedor_1 
 (6, 1),
 (6, 1),
@@ -106,8 +107,8 @@ INSERT INTO tbl_mesas (n_asientos, id_sala) VALUES
 
 INSERT INTO tbl_historial (fecha_A, fecha_NA, assigned_by, assigned_to, id_mesa) 
 VALUES 
-(NOW(), NULL, 1, 'Juanjo', 1),
-(NOW(), NULL, 5, 'Juana', 2),
-(NOW(), NULL, 2, 'Canis', 3),
-(NOW(), NULL, 4, 'Nuestro querido jose', 4),
-(NOW(), NOW(), 3, 'Panchito', 4); -- para pruebas
+(NOW(), NULL, 1, 'Hugo', 1),
+(NOW(), NULL, 5, 'Alex', 2),
+(NOW(), NULL, 2, 'Erik', 3),
+(NOW(), NULL, 4, 'Ming', 4),
+(NOW(), NOW(), 3, 'Dylan', 4);

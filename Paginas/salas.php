@@ -12,7 +12,7 @@
             <?php
                 require_once "../Procesos/conection.php";
                 session_start();
-                // Sesión
+                // Sesión iniciada
                 if (!isset($_SESSION["camareroID"])) {
                     header('Location: ../index.php?error=nosesion');
                     exit();

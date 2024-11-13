@@ -1,18 +1,19 @@
 <?php
-require_once "../Procesos/conection.php";
-session_start();
+    
+    require_once "../Procesos/conection.php";
+    session_start();
 
-// Check if the user is logged in
-if (!isset($_SESSION["camareroID"])) {
-    header('Location: ../index.php?error=nosesion');
-    exit();
-}
+    // Check if the user is logged in
+    if (!isset($_SESSION["camareroID"])) {
+        header('Location: ../index.php?error=nosesion');
+        exit();
+    }
 
-// Inicializar variables
-$SalaSeleccionada = isset($_POST['room']) ? $_POST['room'] : null;
-$selectedTable = isset($_POST['table']) ? $_POST['table'] : null;
-$filterDate = isset($_POST['filter_date']) ? $_POST['filter_date'] : null;
-$filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] : null;
+    // Inicializar variables
+    $SalaSeleccionada = isset($_POST['room']) ? $_POST['room'] : null;
+    $selectedTable = isset($_POST['table']) ? $_POST['table'] : null;
+    $filterDate = isset($_POST['filter_date']) ? $_POST['filter_date'] : null;
+    $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] : null;
 
 ?>
 
@@ -110,7 +111,6 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
                 ?>
             </select>
         </form>
-
         <h3>Historial de Mesa <?php echo $selectedTable; ?></h3>
     <?php else: ?>
         <h3>Historial Completo de Mesas</h3>
@@ -203,10 +203,8 @@ $filterCamarero = isset($_POST['filter_camarero']) ? $_POST['filter_camarero'] :
 
         $stmt_history->close();
     ?>
-
 </body>
 </html>
-
 <?php
-$conn->close();
+    $conn->close();
 ?>

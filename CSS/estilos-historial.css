@@ -1,4 +1,5 @@
-/* General Styling */
+/* Hoja de estilos del historial */
+
 body {
     font-family: Arial, sans-serif;
     background-color: rgb(220, 213, 194);
@@ -23,7 +24,7 @@ th {
     position: sticky;
     top: 0;
     background-color: #fff;
-    z-index: 2; /* Asegúrate de que esté por encima del contenido */
+    z-index: 2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
     text-align: left;
@@ -33,7 +34,6 @@ tr:hover{
     background-color: #e4e4e4;
 }
 
-/* Form Styling */
 form {
     margin-bottom: 20px;
 }
@@ -51,7 +51,6 @@ select {
     max-width: 300px;
 }
 
-/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -70,13 +69,11 @@ th {
     font-weight: bold;
 }
 
-/* Message Styling */
 p {
     font-style: italic;
     color: #666;
 }
 
-/* Estilos del botón "Volver a salas" */
 .back {
     padding: 10px 20px;
     font-size: 16px;

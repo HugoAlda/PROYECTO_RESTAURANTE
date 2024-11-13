@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnAsignar) {
         btnAsignar.addEventListener('click', (event) => {
             event.preventDefault(); // Evitar el envío del formulario inmediato
-
             Swal.fire({
                 title: '¿Seguro que quieres asignar esta mesa?',
                 icon: 'question',

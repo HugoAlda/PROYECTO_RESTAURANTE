@@ -110,7 +110,7 @@
                         echo "</div>";
                         break;
                     default:
-                        # code...
+                        echo "<p>Sala no encontrada.</p>";
                         break;
                     }
 

@@ -1,4 +1,6 @@
-body, html {
+/* Hoja de estilos asignar-mesas */
+
+html, body {
     height: 100%;
     display: flex;
     justify-content: center;
