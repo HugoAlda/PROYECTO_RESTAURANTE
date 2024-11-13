@@ -61,7 +61,7 @@
             <h1>¡Selecciona una sala para ver su disponibilidad de mesas!</h1>
         </div>
         <div class="contenedor-superior">
-            <img src="../CSS/img/MapeadoRestaurante.png" alt="" class="mapeado">
+            <img src="../CSS/img/Mapeado/MapeadoRestaurante.png" alt="" class="mapeado">
         </div>
     </div>
     <!-- SweetAlert -->

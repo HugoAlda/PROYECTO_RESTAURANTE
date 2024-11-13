@@ -66,42 +66,42 @@
                     case 'Terraza_1':
                     
                         echo "<div class='terrazafoto'>";
-                        echo '<img src="../CSS/img/Terraza1.png" alt="" id="terrazafoto">';
+                        echo '<img src="../CSS/img/salas + mesas/Terraza1.png" alt="" id="terrazafoto">';
                         echo "</div>";
                         break;
                     case 'Terraza_2':
                         echo "<div class='terrazafoto'>";
-                        echo '<img src="../CSS/img/Terraza2.png" alt="" id="terrazafoto">';
+                        echo '<img src="../CSS/img/salas + mesas/Terraza2.png" alt="" id="terrazafoto">';
                         echo "</div>";
                         break;
                     case 'Jardin':
                         echo "<div class='jardinfoto'>";
-                        echo '<img src="../CSS/img/jardin.png" alt="" id="jardinfoto">';
+                        echo '<img src="../CSS/img/salas + mesas/jardin.png" alt="" id="jardinfoto">';
                         echo "</div>";
                         break;
                     case 'Comedor_1':
                         echo "<div class='comedorfoto'>";
-                        echo '<img src="../CSS/img/comedor1.png" alt="" id="comedorfoto">';
+                        echo '<img src="../CSS/img/salas + mesas/comedor1.png" alt="" id="comedorfoto">';
                         echo "</div>";
                         break;
                     case 'Comedor_2':
                         echo "<div class='comedorfoto'>";
-                        echo '<img src="../CSS/img/comedor2.png" alt="" id="comedorfoto">';
+                        echo '<img src="../CSS/img/salas + mesas/comedor2.png" alt="" id="comedorfoto">';
                         echo "</div>";
                         break;
                     case 'Salon_VIP':
                         echo "<div class='reservaofoto'>";
-                        echo '<img src="../CSS/img/salon_vip.png" alt="" id="reservaofoto">';
+                        echo '<img src="../CSS/img/salas + mesas/salon_vip.png" alt="" id="reservaofoto">';
                         echo "</div>";
                         break;
                     case 'Salon_VIP_2':
                         echo "<div class='reservaofoto'>";
-                        echo '<img src="../CSS/img/salon_vip_2.png" alt="" id="reservaofoto">';
+                        echo '<img src="../CSS/img/salas + mesas/salon_vip_2.png" alt="" id="reservaofoto">';
                         echo "</div>";
                         break;
                     case 'Salon_romantico':
                         echo "<div class='reservaofoto'>";
-                        echo '<img src="../CSS/img/romantica.png" alt="" id="reservaofoto">';
+                        echo '<img src="../CSS/img/salas + mesas/romantica.png" alt="" id="reservaofoto">';
                         echo "</div>";
                         break;
                     case 'Naturaleza':
