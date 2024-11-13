@@ -106,7 +106,7 @@
                         break;
                     case 'Naturaleza':
                         echo "<div class='reservaofoto'>";
-                        echo '<img src="../CSS/img/naturaleza.png" alt="" id="reservaofoto">';
+                        echo '<img src="../CSS/img/salas + mesas/naturaleza.png" alt="" id="reservaofoto">';
                         echo "</div>";
                         break;
                     default:
