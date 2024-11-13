@@ -121,9 +121,9 @@
         $sql = "
             SELECT h.fecha_A, h.fecha_NA, c.name_camarero, c.surname_camarero, h.assigned_to, m.id_mesa, m.n_asientos, s.name_sala
             FROM tbl_historial h
-            JOIN tbl_camarero c ON h.assigned_by = c.id_camarero
-            JOIN tbl_mesas m ON h.id_mesa = m.id_mesa
-            JOIN tbl_salas s ON m.id_sala = s.id_salas
+            INNER JOIN tbl_camarero c ON h.assigned_by = c.id_camarero
+            INNER JOIN tbl_mesas m ON h.id_mesa = m.id_mesa
+            INNER JOIN tbl_salas s ON m.id_sala = s.id_salas
         ";
 
         // Variables para los parámetros de la consulta
