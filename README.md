@@ -5,10 +5,10 @@
 Este proyecto es un sistema de gestión para restaurantes o bares, diseñado para ayudar a los camareros a gestionar las mesas y sus asignaciones de forma intuitiva. Es un proyecto grupal del **Grupo DOC BROWN**, como parte de nuestra formación en desarrollo de aplicaciones web.
 
 ### Equipo Doctor Brown
-- **Zhou Ming**
-- **Hugo Alda Cárdenas**
-- **Erik Peñas Andrea**
-- **Àlex Ventura Reynés**
+- **Zhou, Ming**
+- **Alda Cárdenas, Hugo**
+- **Peñas Andrea, Erik**
+- **Ventura Reynés,Àlex**
 
 ---
 
