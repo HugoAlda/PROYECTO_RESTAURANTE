@@ -1,3 +1,5 @@
+/* Hoja de estilos para las salas */
+
 body {
     margin: 0;
     padding: 0;
@@ -37,7 +39,7 @@ a {
 .contenedor-superior {
     display: flex;
     width: 100%;
-    height: 90%; /* Ajusta el tamaño general de la sección superior */
+    height: 90%;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -46,34 +48,34 @@ a {
 
 /* Mapeado con imagen de fondo */
 .mapeado {
-    height: 90vh; /* Ajusta la altura según lo necesites */
+    height: 90vh;
     position: relative;
-    z-index: 1; /* Asegura que la imagen quede detrás de los inputs */
+    z-index: 1;
 }
 
 /* Los inputs de las salas estarán dentro de este contenedor, que tiene z-index alto */
 .input_sala {
-    position: absolute; /* Colocación sobre la imagen */
+    position: absolute;
     padding: 10px;
-    background-color: transparent; /* Fondo transparente */
+    background-color: transparent;
     color: transparent;
     cursor: pointer;
     transition: background-color 0.3s;
-    z-index: 3; /* Asegura que los botones estén encima de la imagen */
+    z-index: 3;
     border: transparent;
 }
 
 .input_sala2 {
     position: absolute;
-    display: flex; /* Utilizamos flexbox para centrar el contenido */
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     cursor: pointer;
     z-index: 2;
     border: none;
-    background-color: transparent; /* Fondo transparente */
-    color: white; /* Asegúrate de que el texto sea visible */
+    background-color: transparent;
+    color: white;
     padding-left: 12px;
 }
 
@@ -82,7 +84,7 @@ a {
     background-color: rgba(0, 0, 0, 0.309);
 }
 
-/* Ubicaciones absolutas de cada sala */
+/* Inputs de cada sala */
 .input_Comedor_1 {
     left: 16%;
     width: 34%;
@@ -218,23 +220,22 @@ a {
 }
 
 /* Footer */
-
 h1 {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
-    width: 100%; /* Asegura que el h1 ocupe todo el ancho de su contenedor */
-    height: 100%; /* Asegura que el h1 ocupe todo el alto de su contenedor */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     margin-top: 0;
-    margin-left: -5.5%; /* Elimina márgenes para evitar desplazamientos */
+    margin-left: -5.5%;
 }
 
 .footer {
-    width: 100%; /* 100% del ancho */
-    height: 5%;  /* Ajusta la altura del footer */
+    width: 100%;
+    height: 5%;
     display: flex;
-    position: relative;  /* Necesario para que el z-index funcione */
-    z-index: 10; /* Asegura que el footer esté por encima del mapeado */
+    position: relative;
+    z-index: 10;
 }
 
 /* Asegura que el enlace se muestre correctamente */
@@ -243,15 +244,15 @@ h1 {
     align-items: center;
     justify-content: left;
     text-align: center;
-    position: relative;  /* Hace que el z-index funcione aquí también */
-    z-index: 20; /* Establece un z-index alto para el enlace */
+    position: relative;
+    z-index: 20;
 }
 
 /* Asegura que el botón esté por encima de la imagen de fondo */
 .logout {
     position: relative;
     width: 140px;
-    z-index: 30; /* Asegura que el botón esté por encima de otros elementos */
+    z-index: 30;
     margin-left: 6px;
     margin-top: 15px;
 }

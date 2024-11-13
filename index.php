@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/estilos.css">
     <script src="./JS/validaciones.js"></script>
-    <title>Bienvenido</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="container">
